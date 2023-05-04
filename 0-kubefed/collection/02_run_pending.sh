@@ -13,7 +13,7 @@ done < node_list_all
 #. ./script/topnode.sh 0 > /dev/null &
 #. ./script/toppodm.sh 0 > /dev/null &
 
-ssh root@10.$ip1.$ip2.3 timeout 6000 tcpdump -i ens3 -nn -q >> cross  &
+ssh root@10.$ip1.$ip2.3 timeout 6000 tcpdump -i ens3 tcp and dst 10.158.0.3 and not src 10.158.0.2  -nn -q >> cross  &
 
 j=1
 for i in $(cat node_list)
