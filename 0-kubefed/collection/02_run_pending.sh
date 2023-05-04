@@ -26,8 +26,8 @@ do
 	ssh root@$i . /root/exprbs/0-kubefed/collection/script/getpod.sh $j > /dev/null &
 	j=$((j+1))	
 done
-
-python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py &
+python3 /root/k8s_google_injection/run_deployments_jobs_kubefed.py &
+#python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py &
 #python3 /root/k8s_google_injection/run_deployments_jobs_low.py &
 echo "wait for 7200 secs"
 sleep 7200
