@@ -4,7 +4,7 @@ apt-get update
 sudo apt-get install vim -y
 sudo apt install python3-pip -y
 pip3 install kubernetes
-pip3 install pandas
+pip3 install pandas==1.5.3
 pip3 install pint
 pip3 install prometheus_api_client
 pip3 install aiohttp
