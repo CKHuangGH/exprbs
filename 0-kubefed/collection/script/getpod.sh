@@ -5,7 +5,7 @@ NameForTopNode=kubegetpodcluster$i.csv
 NodeTime=0
 
 update_file_node() {
-  kubectl get pod | tr -s '[:blank:]' ',' | tee --append $NameForTopNode;
+  kubectl get pod -n test-namespace | tr -s '[:blank:]' ',' | tee --append $NameForTopNode;
   echo $(date +'%s.%N') | tee --append $NameForTopNode;
 }
 
