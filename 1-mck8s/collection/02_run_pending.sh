@@ -7,13 +7,13 @@ break
 done < node_list_all
 
 #python3 ./script/scrapetime.py &
-. ./script/toppodd.sh > /dev/null &
-#. ./script/toppodkf.sh > /dev/null &
+#. ./script/toppodd.sh > /dev/null &
+. ./script/toppodkf.sh > /dev/null &
 #. ./script/toppodks.sh > /dev/null &
 . ./script/topnode.sh 0 > /dev/null &
 #. ./script/toppodm.sh 0 > /dev/null &
 
-ssh root@10.$ip1.$ip2.3 timeout 6000 tcpdump -i ens3 tcp and dst 10.$ip1.$ip2.3 and not src 10.$ip1.$ip2.2 -nn -q >> cross  &
+ssh root@10.$ip1.$ip2.3 timeout 6000 tcpdump -i ens3 tcp and dst 10.158.0.3 and not src 10.158.0.2  -nn -q >> cross  &
 
 j=1
 for i in $(cat node_list)
