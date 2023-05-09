@@ -3,6 +3,20 @@
 # Deploy Prometheus Federation on Cluster 0
 kubectl config use-context cluster0
 
+export INSTALL_CLI_VERSION=1.5.0
+curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash
+
+kubectl karmada init
+
+
+
+
+
+
+
+
+
+
 # Install kubefedctl
 # wget --tries=0 https://github.com/kubernetes-sigs/kubefed/releases/download/v0.9.2/kubefedctl-0.9.2-linux-amd64.tgz
 # tar xzvf kubefedctl-0.9.2-linux-amd64.tgz
