@@ -16,12 +16,12 @@ do
     sed -i 's/cluster: kubernetes/cluster: cluster'$i'/g' ~/.kube/cluster$i
 done
 
-# for i in `seq 0 $number`
-# do
-    # string=$string"/root/.kube/cluster$i:"
-# done
-# string=$string | sed "s/.$//g"
-# KUBECONFIG=$string kubectl config view --flatten > ~/.kube/config
+for i in `seq 0 $number`
+do
+    string=$string"/root/.kube/cluster$i:"
+done
+string=$string | sed "s/.$//g"
+KUBECONFIG=$string kubectl config view --flatten > ~/.kube/config
 
 for i in `seq 0 $number`
 do
@@ -45,7 +45,7 @@ cluster=1
 for i in $(cat node_list)
 do
 	ssh-keyscan $i >> /root/.ssh/known_hosts
-	#scp /root/.kube/config root@$i:/root/.kube
+	scp /root/.kube/config root@$i:/root/.kube
 	ssh root@$i chmod 777 /root/exprbs/kubernetes/worker_node.sh
 	ssh root@$i sh /root/exprbs/kubernetes/worker_node.sh $cluster &
 	cluster=$((cluster+1))
