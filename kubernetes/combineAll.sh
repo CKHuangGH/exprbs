@@ -45,7 +45,7 @@ cluster=1
 for i in $(cat node_list)
 do
 	ssh-keyscan $i >> /root/.ssh/known_hosts
-	scp /root/.kube/config root@$i:/root/.kube
+	#scp /root/.kube/config root@$i:/root/.kube
 	ssh root@$i chmod 777 /root/exprbs/kubernetes/worker_node.sh
 	ssh root@$i sh /root/exprbs/kubernetes/worker_node.sh $cluster &
 	cluster=$((cluster+1))
