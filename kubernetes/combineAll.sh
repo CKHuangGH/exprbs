@@ -9,12 +9,12 @@ pip3 install pint
 pip3 install prometheus_api_client
 pip3 install aiohttp
 
-# for i in `seq 0 $number`
-# do
-    # sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
-    # sed -i 's/name: kubernetes/name: cluster'$i'/g' ~/.kube/cluster$i
-    # sed -i 's/cluster: kubernetes/cluster: cluster'$i'/g' ~/.kube/cluster$i
-# done
+for i in `seq 0 $number`
+do
+    sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
+    sed -i 's/name: kubernetes/name: cluster'$i'/g' ~/.kube/cluster$i
+    sed -i 's/cluster: kubernetes/cluster: cluster'$i'/g' ~/.kube/cluster$i
+done
 
 # for i in `seq 0 $number`
 # do
@@ -23,10 +23,10 @@ pip3 install aiohttp
 # string=$string | sed "s/.$//g"
 # KUBECONFIG=$string kubectl config view --flatten > ~/.kube/config
 
-# for i in `seq 0 $number`
-# do
-    # kubectl config rename-context k8s-admin-cluster$i@kubernetes cluster$i
-# done
+for i in `seq 0 $number`
+do
+    kubectl config rename-context k8s-admin-cluster$i@kubernetes cluster$i
+done
 
 sleep 2
 

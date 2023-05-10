@@ -4,7 +4,7 @@
 kubectl config use-context cluster0
 
 export INSTALL_CLI_VERSION=1.5.0
-curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash
+curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
 
 kubectl karmada init
 
