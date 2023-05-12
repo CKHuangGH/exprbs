@@ -10,6 +10,14 @@ pip3 install pint
 pip3 install prometheus_api_client
 pip3 install aiohttp
 
+curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash
+
+export INSTALL_CLI_VERSION=1.5.0
+curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
+
+sleep 5
+
+
 for i in `seq 0 $number`
 do
     sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
@@ -17,11 +25,16 @@ do
     sed -i 's/cluster: kubernetes/cluster: cluster'$i'/g' ~/.kube/cluster$i
 done
 
+cp /etc/karmada/karmada-apiserver.config /root/.kube
+
 for i in `seq 0 $number`
 do
     string=$string"/root/.kube/cluster$i:"
 done
-string=$string | sed "s/.$//g"
+
+string=$string"/root/.kube/karmada-apiserver.config"
+
+#string=$string | sed "s/.$//g"
 KUBECONFIG=$string kubectl config view --flatten > ~/.kube/config
 
 for i in `seq 0 $number`

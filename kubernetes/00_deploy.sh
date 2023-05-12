@@ -4,4 +4,3 @@ ls /root/.kube/
 read -p "please enter the last cluster number in .kube: " number
 
 ./combineAll.sh $number
-./mck8s-management.sh
