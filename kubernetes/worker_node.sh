@@ -1,6 +1,8 @@
 #!/bin/bash
 cluster=$1
-
+apt-get update
+sudo apt-get install vim -y
+sudo apt-get install net-tools -y
 #modify the address for kubeproxy
 echo "copy metrics_server.yaml-----------------------"
 mv /root/exprbs/0-kubefed/metrics_server.yaml /root/
