@@ -19,3 +19,5 @@ string=$string"/root/.kube/karmada-apiserver.config"
 string=$string | sed "s/.$//g"
 
 KUBECONFIG=$string kubectl config view --flatten > ~/.kube/config
+
+rm -rf /usr/local/bin/kubectl-karmada

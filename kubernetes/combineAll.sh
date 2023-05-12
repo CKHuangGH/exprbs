@@ -12,7 +12,6 @@ pip3 install aiohttp
 
 curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash
 
-export INSTALL_CLI_VERSION=1.5.0
 curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
 
 for i in `seq 0 $number`
