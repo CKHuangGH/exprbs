@@ -12,6 +12,13 @@ cp /etc/karmada/karmada-apiserver.config /root/.kube
 
 for i in `seq 0 $number`
 do
+    sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
+    sed -i 's/name: kubernetes/name: cluster'$i'/g' ~/.kube/cluster$i
+    sed -i 's/cluster: kubernetes/cluster: cluster'$i'/g' ~/.kube/cluster$i
+done
+
+for i in `seq 0 $number`
+do
     string=$string"/root/.kube/cluster$i:"
 done
 
