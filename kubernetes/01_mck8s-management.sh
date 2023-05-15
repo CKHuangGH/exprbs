@@ -27,4 +27,9 @@ string=$string | sed "s/.$//g"
 
 KUBECONFIG=$string kubectl config view --flatten > ~/.kube/config
 
+for i in `seq 0 $number`
+do
+    kubectl config rename-context k8s-admin-cluster$i@kubernetes cluster$i
+done
+
 rm -rf /usr/local/bin/kubectl-karmada
