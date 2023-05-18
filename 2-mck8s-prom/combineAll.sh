@@ -8,6 +8,7 @@ pip3 install pandas==1.5.3
 pip3 install pint
 pip3 install prometheus_api_client
 pip3 install aiohttp
+
 for i in `seq 0 $number`
 do
     sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
@@ -45,8 +46,8 @@ for i in $(cat node_list)
 do
 	ssh-keyscan $i >> /root/.ssh/known_hosts
 	scp /root/.kube/config root@$i:/root/.kube
-	ssh root@$i chmod 777 /root/exprbs/2-mck8s-prom/worker_node.sh
-	ssh root@$i sh /root/exprbs/2-mck8s-prom/worker_node.sh $cluster &
+	ssh root@$i chmod 777 /root/exprbs/3-mck8s-acala/worker_node.sh
+	ssh root@$i sh /root/exprbs/3-mck8s-acala/worker_node.sh $cluster &
 	cluster=$((cluster+1))
 	sleep 2
 done
@@ -70,17 +71,6 @@ do
 	helm install cilium cilium/cilium --version 1.11.4 --wait --wait-for-jobs --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i
 done
 
-# for i in `seq 0 0`
-# do
-# kubectl config use-context cluster$i
-# KUBE_EDITOR="sed -i s/metricsBindAddress:.*/metricsBindAddress:\ "0.0.0.0:10249"/g" kubectl edit cm/kube-proxy -n kube-system
-# kubectl delete pod -l k8s-app=kube-proxy -n kube-system
-# done
-
-sleep 5
-
-#Deploy metrics server
-#wget https://gist.githubusercontent.com/moule3053/1b14b7898fd473b4196bdccab6cc7b48/raw/916f4362bcde612d0f96af48bc7ef7b99ab06a1f/metrics_server.yaml
 for i in `seq 0 0`
 do
     kubectl --context=cluster$i create -f metrics_server.yaml

@@ -1,38 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cloud-provisioner
+  name: multiclusterscheduler
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cloud-provisioner
+      app: multiclusterscheduler
   template:
     metadata:
       labels:
-        app: cloud-provisioner
+        app: multiclusterscheduler
     spec:
       nodeSelector:
-        kubernetes.io/hostname: MASTER_NODE_HOST_NAME
+        node-role.kubernetes.io/master: ""
       tolerations:
       - key: "node-role.kubernetes.io/master"
         operator: "Equal"
         effect: "NoSchedule"
       serviceAccountName: rbac-mck8s
       containers:
-      - image: REPO_NAME/CLOUD_PROVISIONER_IMAGE
-        name: cloud-provisioner
+      - image: docker.io/chuangtw/mcsacala
+        name: mcs
         imagePullPolicy: Always
         volumeMounts:
         - mountPath: /root/.kube/config
           name: kube-config
-        #resources:
-        #  requests:
-        #    cpu: 1000m
-        #    memory: 1024Mi
+        resources:
+          requests:
+            cpu: 2000m
+            memory: 1024Mi
       volumes:
       - name: kube-config
         hostPath:
-          path: /PATH/TO/HOME/DIRECTORY/.kube/config
+          path: /root/.kube/config
           type: File
-
