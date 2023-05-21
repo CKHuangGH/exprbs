@@ -6,3 +6,6 @@ read -p "please enter the last cluster number in .kube: " number
 ./promvalue.sh
 ./combineAll.sh $number
 ./mck8s-management.sh
+
+sleep 40
+./02_joining.sh

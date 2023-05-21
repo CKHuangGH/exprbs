@@ -12,5 +12,5 @@ sleep 30
 kubectl apply -f /root/exprbs/3-mck8s-acala/acala/controller/5s/deploy_controller.yaml
 echo "wait 60s-------------------------------"
 sleep 60
-
+./03_joining.sh
 echo "Good for check"

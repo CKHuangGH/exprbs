@@ -20,7 +20,7 @@ spec:
         effect: "NoSchedule"
       serviceAccountName: rbac-mck8s
       containers:
-      - image: docker.io/chuangtw/mcsv2after
+      - image: docker.io/chuangtw/mcsv2after60
         name: mcs
         imagePullPolicy: Always
         volumeMounts:
