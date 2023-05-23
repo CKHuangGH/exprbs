@@ -11,7 +11,7 @@ done
 read -p "please input end:" end
 echo "save time" >> ./results/status.txt
 echo $(date +'%s.%N') >> ./results/status.txt
-for i in `seq 0 $end`
+for i in `seq 0 5`
 do
 	echo "-------------------------" >> ./results/status.txt
 	echo "-------------cluster$i-------------" >> ./results/status.txt
