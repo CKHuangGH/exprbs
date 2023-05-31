@@ -1,5 +1,6 @@
 #!/bin/bash
 cluster=$1
+
 apt-get update
 sudo apt-get install vim -y
 sudo apt-get install net-tools -y
@@ -11,7 +12,7 @@ pip3 install prometheus_api_client
 pip3 install aiohttp
 
 curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
-
+curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 #modify the address for kubeproxy
 echo "copy metrics_server.yaml-----------------------"
 mv /root/exprbs/0-kubefed/metrics_server.yaml /root/
