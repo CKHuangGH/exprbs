@@ -36,3 +36,6 @@ git clone https://github.com/liqotech/liqo.git
 cd liqo
 git checkout master
 cd examples/quick-start
+
+sudo sysctl fs.inotify.max_user_watches=524288
+sudo sysctl fs.inotify.max_user_instances=512
