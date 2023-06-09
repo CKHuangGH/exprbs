@@ -31,3 +31,8 @@ export PATH=$PATH:/usr/local/go/bin
 go install sigs.k8s.io/kind@v0.19.0
 
 cp /root/go/bin/kind /usr/local/bin/kind
+
+git clone https://github.com/liqotech/liqo.git
+cd liqo
+git checkout master
+cd examples/quick-start
