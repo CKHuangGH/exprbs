@@ -39,3 +39,15 @@ cd examples/quick-start
 
 sudo sysctl fs.inotify.max_user_watches=524288
 sudo sysctl fs.inotify.max_user_instances=512
+
+cp /root/exprbs/single/setup.sh /root/exprbs/single/liqo/examples/quick-start/
+sleep 10
+
+. /root/exprbs/single/liqo/examples/quick-start/setup.sh
+export KUBECONFIG="$PWD/liqo_kubeconf_rome"
+export KUBECONFIG_MILAN="$PWD/liqo_kubeconf_milan"
+export KUBECONFIG_RENNES="$PWD/liqo_kubeconf_rennes"
+
+liqoctl install kind --cluster-name rome --kubeconfig "$KUBECONFIG" --service-type NodePort
+liqoctl install kind --cluster-name milan --kubeconfig "$KUBECONFIG_MILAN" --service-type NodePort
+liqoctl install kind --cluster-name rennes --kubeconfig "$KUBECONFIG_RENNES" --service-type NodePort
