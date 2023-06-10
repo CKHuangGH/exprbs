@@ -40,7 +40,7 @@ cd examples/quick-start
 sudo sysctl fs.inotify.max_user_watches=524288
 sudo sysctl fs.inotify.max_user_instances=512
 
-cp /root/exprbs/single/setup.sh /root/exprbs/single/liqo/examples/quick-start/
+cp /root/exprbs/single/example/setup.sh /root/exprbs/single/liqo/examples/quick-start/
 sleep 10
 
 . /root/exprbs/single/liqo/examples/quick-start/setup.sh
