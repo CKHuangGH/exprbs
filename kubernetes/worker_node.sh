@@ -15,6 +15,8 @@ pip3 install aiohttp
 curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
 curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+
+
 #modify the address for kubeproxy
 echo "copy metrics_server.yaml-----------------------"
 mv /root/exprbs/kubernetes/metrics_server.yaml /root/
@@ -40,3 +42,4 @@ echo "Install Metrics server-----------------------"
 kubectl --context=cluster$cluster create -f metrics_server.yaml
 
 echo "-----------------------Member cluster$cluster is ready----------------------"
+
