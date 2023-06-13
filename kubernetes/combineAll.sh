@@ -18,6 +18,10 @@ curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install
 
 curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
 
+wget --tries=0 https://github.com/kubernetes-sigs/kubefed/releases/download/v0.9.2/kubefedctl-0.9.1-linux-amd64.tgz
+tar xzvf kubefedctl-0.9.2-linux-amd64.tgz
+mv kubefedctl /usr/local/bin/
+
 for i in `seq 0 $number`
 do
     sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
@@ -87,3 +91,8 @@ do
 done
 sleep 5
 echo "-------------------------------------- OK --------------------------------------"
+
+helm repo add kubefed-charts https://raw.githubusercontent.com/kubernetes-sigs/kubefed/master/charts
+helm repo update
+
+helm --namespace kube-federation-system upgrade -i kubefed kubefed-charts/kubefed --version 0.9.2 --create-namespace
