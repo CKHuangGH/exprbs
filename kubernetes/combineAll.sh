@@ -18,6 +18,10 @@ curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install
 
 curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
 
+curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-amd64" && sudo install -c -m 0755 vcluster /usr/local/bin && rm -f vcluster
+
+
+
 wget --tries=0 https://github.com/kubernetes-sigs/kubefed/releases/download/v0.9.2/kubefedctl-0.9.1-linux-amd64.tgz
 tar xzvf kubefedctl-0.9.2-linux-amd64.tgz
 mv kubefedctl /usr/local/bin/
