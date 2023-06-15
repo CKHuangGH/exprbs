@@ -91,8 +91,3 @@ do
 done
 sleep 5
 echo "-------------------------------------- OK --------------------------------------"
-
-helm repo add kubefed-charts https://raw.githubusercontent.com/kubernetes-sigs/kubefed/master/charts
-helm repo update
-
-helm --namespace kube-federation-system upgrade -i kubefed kubefed-charts/kubefed --version 0.9.2 --create-namespace
