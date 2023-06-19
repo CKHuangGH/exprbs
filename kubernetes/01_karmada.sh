@@ -32,4 +32,6 @@ do
     kubectl config rename-context k8s-admin-cluster$i@kubernetes cluster$i
 done
 
+kubectl config rename-context karmada-apiserver$i@kubernetes cluster$i
+
 #rm -rf /usr/local/bin/kubectl-karmada
