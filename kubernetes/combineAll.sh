@@ -10,12 +10,6 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/
 
 curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-amd64" && sudo install -c -m 0755 vcluster /usr/local/bin && rm -f vcluster
 
-
-
-wget --tries=0 https://github.com/kubernetes-sigs/kubefed/releases/download/v0.9.2/kubefedctl-0.9.1-linux-amd64.tgz
-tar xzvf kubefedctl-0.9.2-linux-amd64.tgz
-mv kubefedctl /usr/local/bin/
-
 for i in `seq 0 $number`
 do
     sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
@@ -69,9 +63,6 @@ pip3 install pandas==1.5.3
 pip3 install pint
 pip3 install prometheus_api_client
 pip3 install aiohttp
-
-
-
 
 # Install helm3
 echo "Helm3"
