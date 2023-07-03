@@ -63,6 +63,7 @@ pip3 install pandas==1.5.3
 pip3 install pint
 pip3 install prometheus_api_client
 pip3 install aiohttp
+sudo apt install git -y
 
 # Install helm3
 echo "Helm3"
@@ -74,6 +75,11 @@ helm repo add cilium https://helm.cilium.io/
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
+echo "install go"
+wget https://go.dev/dl/go1.20.5.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
 sleep 3
 
 for i in `seq 0 0`

@@ -11,11 +11,13 @@ rm -rf /usr/local/bin/clusteradm
 rm -rf clusteradm_mcsupport/
 
 git clone https://github.com/CKHuangGH/clusteradm_mcsupport.git
-cd clusteradm
+chmod 777 clusteradm_mcsupport/
+cd clusteradm_mcsupport/
 make build
-cp clusteradm /usr/local/bin/clusteradm
 
+cp /root/go/bin/clusteradm /usr/local/bin/clusteradm
+cd ..
 for i in $(cat node_list)
 do
-	scp clusteradm root@$i:/usr/local/bin/
+	scp /root/go/bin/clusteradm root@$i:/usr/local/bin/
 done
