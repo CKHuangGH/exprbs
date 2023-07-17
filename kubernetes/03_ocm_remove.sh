@@ -10,6 +10,8 @@ done
 kubectl config use-context cluster1
 kubectl delete ns open-cluster-management
 kubectl delete ns open-cluster-management-agent
+kubectl delete ns cluster1
+kubectl delete ns open-cluster-management-agent-addon
 kubectl config use-context cluster0
 clusteradm clean --context cluster0
 kubectl delete ns cluster1
