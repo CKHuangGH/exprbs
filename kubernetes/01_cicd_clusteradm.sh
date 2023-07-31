@@ -8,11 +8,11 @@ done
 
 rm -rf /usr/local/bin/clusteradm
 
-rm -rf clusteradm_mcsupport/
+rm -rf clusteradm_mmc/
 
-git clone https://github.com/CKHuangGH/clusteradm_mcsupport.git
-chmod 777 clusteradm_mcsupport/
-cd clusteradm_mcsupport/
+git clone https://github.com/CKHuangGH/clusteradm_mmc.git
+chmod 777 clusteradm_mmc/
+cd clusteradm_mmc/
 make build
 
 cp /root/go/bin/clusteradm /usr/local/bin/clusteradm
