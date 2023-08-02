@@ -1,3 +1,5 @@
+clusteradm create work namespace-test -f example/namespace.yaml --clusters cluster1
+
 clusteradm create work job-test -f example/job.yaml --clusters cluster1
 clusteradm create work pod-test -f example/pod.yaml --clusters cluster1
 
