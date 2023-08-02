@@ -2,9 +2,9 @@ number=$1
 
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
-curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash
 
-curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
+# curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
 
 #curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
 
@@ -57,12 +57,12 @@ done
 apt-get update
 sudo apt-get install vim -y
 sudo apt-get install net-tools -y
-sudo apt install python3-pip -y
-pip3 install kubernetes
-pip3 install pandas==1.5.3
-pip3 install pint
-pip3 install prometheus_api_client
-pip3 install aiohttp
+# sudo apt install python3-pip -y
+# pip3 install kubernetes
+# pip3 install pandas==1.5.3
+# pip3 install pint
+# pip3 install prometheus_api_client
+# pip3 install aiohttp
 sudo apt install git -y
 
 # Install helm3
