@@ -57,7 +57,7 @@ done
 apt-get update
 sudo apt-get install vim -y
 sudo apt-get install net-tools -y
-# sudo apt install python3-pip -y
+sudo apt install python3-pip -y
 # pip3 install kubernetes
 # pip3 install pandas==1.5.3
 # pip3 install pint
