@@ -3,6 +3,9 @@ clusteradm create work namespace-test -f example/namespace.yaml --clusters clust
 clusteradm create work job-test -f example/job.yaml --clusters cluster1
 clusteradm create work pod-test -f example/pod.yaml --clusters cluster1
 
+clusteradm create work daemoset-test -f example/daemoset.yaml --clusters cluster1
+
+
 clusteradm create work deployment-test -f example/deployment.yaml --clusters cluster1
 clusteradm create work service-nodeport-test -f example/service-nodeport.yaml --clusters cluster1
 
