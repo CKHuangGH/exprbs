@@ -19,3 +19,5 @@ clusteradm create work cfmap-test -f example/cfmap.yaml --clusters cluster1
 clusteradm create work cfmap-run-test -f example/cfmap-test.yaml --clusters cluster1
 
 clusteradm create work secret-test -f example/secret.yaml --clusters cluster1
+
+clusteradm create work storageclass-test -f example/storageclass.yaml --clusters cluster1
