@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: job-test
-  namespace: default
+  namespace: namespace-test
 spec:
   manualSelector: true
   selector:
