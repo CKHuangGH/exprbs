@@ -23,8 +23,8 @@ spec:
 EOF
 )
 
-# 迴圈 1000 次
-for ((i=1; i<=100; i++)); do
+# 迴圈 400 次
+for ((i=1; i<=400; i++)); do
     deployment_yaml="${deployment_template//INDEX/$i}"
     echo "$deployment_yaml" > nginx-deployment-$i.yaml
     
