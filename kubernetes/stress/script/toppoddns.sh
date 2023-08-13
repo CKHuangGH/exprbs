@@ -2,7 +2,7 @@ TimerForPodDNS=1
 NameForPodDNS=kubetopPodDNS.csv
 PodDNSTime=0
 update_file_podDNS() {
-  kubectl top pod -A -l vcluster.loft.sh/managed-by=vcluster | tr -s '[:blank:]' ',' | tee --append $NameForPodDNS;
+  kubectl top pod -A -l vcluster.loft.sh/namespace=kube-system | tr -s '[:blank:]' ',' | tee --append $NameForPodDNS;
   echo $(date +'%s.%N') | tee --append $NameForPodDNS;
 }
 

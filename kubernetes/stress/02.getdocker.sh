@@ -10,15 +10,7 @@ do
 	j=$((j+1))	
 done
 
-cp ../node_list_all node_list_all
-
-while read line
-do 
-echo $line
-ip1=$(echo $line | cut -d "." -f 2)
-ip2=$(echo $line | cut -d "." -f 3)
-break
-done < node_list_all
+mv cross /root/exprbs/kubernetes/stress/cross
 
 sleep 3
 random_number=$((1 + $RANDOM))

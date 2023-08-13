@@ -26,7 +26,7 @@ done < node_list_all
 
 . ./script/100.sh > /dev/null &
 
-ssh root@10.$ip1.$ip2.2 timeout 2400 tcpdump -i ens3 dst port 6443 -nn -q >> cross  &
+ssh root@10.$ip1.$ip2.2 timeout 2400 tcpdump -i ens3 port 6443 -nn -q >> cross  &
 
 j=1
 for i in $(cat node_exec)
