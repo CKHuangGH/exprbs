@@ -22,7 +22,7 @@ echo $line
 ip1=$(echo $line | cut -d "." -f 2)
 ip2=$(echo $line | cut -d "." -f 3)
 break
-done < node_list_final
+done < node_list_all
 
 . ./script/100.sh > /dev/null &
 

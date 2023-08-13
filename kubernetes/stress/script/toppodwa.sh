@@ -8,7 +8,7 @@ update_file_podwa() {
 
 while ((PodwaTime < 2400))
 do
-  update_file_podD
+  update_file_podwa
   sleep $TimerForPodwa;
   PodwaTime=$PodwaTime+1
 done
