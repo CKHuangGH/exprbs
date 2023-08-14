@@ -44,7 +44,10 @@ do
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppoddns.sh > /dev/null &
 	j=$((j+1))
 done
-
 echo "wait for 2800 secs"
-sleep 2800
+for (( i=2800; i>0; i-- )); do
+    echo "$i 秒剩餘..."
+    sleep 1
+done
+
 . 02.getdocker.sh
