@@ -34,4 +34,5 @@ for ((i=1; i<=500; i++)); do
     rm -rf nginx-deployment-$i.yaml
 done
 
-echo "All deployments created."
+echo $(date +'%s.%N') >> number.txt
+echo "All deployments created." >> number.txt

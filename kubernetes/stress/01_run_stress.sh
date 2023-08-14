@@ -24,11 +24,11 @@ ip2=$(echo $line | cut -d "." -f 3)
 break
 done < node_list_all
 
-read -p "please enter the last cluster number in .kube: " number
+read -p "please enter the test number(100, 200, ..., 500): " number
 
 echo $number
-echo $number > number
-mv number /root/exprbs/kubernetes/stress/results/number
+echo $number > number.txt
+
 
 . ./script/$number.sh > /dev/null &
 
@@ -42,6 +42,7 @@ do
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodra.sh > /dev/null &
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodkl.sh > /dev/null &
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppoddns.sh > /dev/null &
+    ssh root@$i . /root/exprbs/kubernetes/stress/checking.sh $number
 	j=$((j+1))
 done
 echo "wait for 2800 secs"

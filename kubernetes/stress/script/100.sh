@@ -30,5 +30,5 @@ for ((i=1; i<=100; i++)); do
     clusteradm create work test$i -f nginx-deployment-$i.yaml --cluster cluster1
     rm -rf nginx-deployment-$i.yaml
 done
-
-echo "All deployments created."
+echo $(date +'%s.%N') >> number.txt
+echo "All deployments created." >> number.txt

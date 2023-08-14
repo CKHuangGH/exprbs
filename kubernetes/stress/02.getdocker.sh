@@ -11,7 +11,7 @@ do
 done
 
 mv cross /root/exprbs/kubernetes/stress/results/cross
-
+mv number.txt /root/exprbs/kubernetes/stress/results/number.txt
 sleep 3
 random_number=$((1 + $RANDOM))
 scp -o StrictHostKeyChecking=no -r /root/exprbs/kubernetes/stress/results chuang@172.16.111.106:/home/chuang/results$random_number
