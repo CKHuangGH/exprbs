@@ -10,7 +10,7 @@ do
 	j=$((j+1))	
 done
 
-mv cross /root/exprbs/kubernetes/stress/cross
+mv cross /root/exprbs/kubernetes/stress/results/cross
 
 sleep 3
 random_number=$((1 + $RANDOM))

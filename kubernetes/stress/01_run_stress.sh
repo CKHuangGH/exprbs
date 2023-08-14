@@ -24,7 +24,13 @@ ip2=$(echo $line | cut -d "." -f 3)
 break
 done < node_list_all
 
-. ./script/100.sh > /dev/null &
+read -p "please enter the last cluster number in .kube: " number
+
+echo $number
+echo $number > number
+mv number /root/exprbs/kubernetes/stress/results/number
+
+. ./script/$number.sh > /dev/null &
 
 ssh root@10.$ip1.$ip2.2 timeout 2400 tcpdump -i ens3 port 6443 -nn -q >> cross  &
 
