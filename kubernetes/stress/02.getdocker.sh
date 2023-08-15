@@ -7,6 +7,7 @@ do
 	scp root@$i:/root/kubetopPodRA.csv /root/exprbs/kubernetes/stress/results/kubetopPodRA.csv
 	scp root@$i:/root/kubetopPodVC.csv /root/exprbs/kubernetes/stress/results/kubetopPodVC.csv
 	scp root@$i:/root/kubetopPodKL.csv /root/exprbs/kubernetes/stress/results/kubetopPodKL.csv
+	scp root@$i:/root/timeforend.txt /root/exprbs/kubernetes/stress/results/timeforend.txt
 	j=$((j+1))	
 done
 

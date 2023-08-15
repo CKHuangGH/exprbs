@@ -9,7 +9,7 @@ while true; do
     
     if [ "$running_pods" -eq "$NUM_PODS" ]; then
         current_time=$(date +'%s.%N')
-        echo $current_time >> number.txt
+        echo $current_time >> timeforend.txt
         break
     else
         sleep $SLEEP_INTERVAL
