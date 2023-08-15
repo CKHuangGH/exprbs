@@ -42,7 +42,7 @@ do
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodra.sh > /dev/null &
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodkl.sh > /dev/null &
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppoddns.sh > /dev/null &
-    ssh root@$i . /root/exprbs/kubernetes/stress/checking.sh $number
+    ssh root@$i . /root/exprbs/kubernetes/stress/checking.sh $number &
 	j=$((j+1))
 done
 echo "wait for 2800 secs"
