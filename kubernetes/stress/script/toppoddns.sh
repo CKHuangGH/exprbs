@@ -6,7 +6,7 @@ update_file_podDNS() {
   echo $(date +'%s.%N') | tee --append $NameForPodDNS;
 }
 
-while ((PodDNSTime < 2400))
+while ((PodDNSTime < 3000))
 do
   update_file_podDNS
   sleep $TimerForPodDNS;

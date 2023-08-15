@@ -32,7 +32,7 @@ echo $number > number.txt
 
 . ./script/$number.sh > /dev/null &
 
-ssh root@10.$ip1.$ip2.2 timeout 2400 tcpdump -i ens3 port 6443 -nn -q >> cross  &
+ssh root@10.$ip1.$ip2.2 timeout 3000 tcpdump -i ens3 port 6443 -nn -q >> cross  &
 
 j=1
 for i in $(cat node_exec)
@@ -46,7 +46,7 @@ do
 	j=$((j+1))
 done
 echo "wait for 2800 secs"
-for (( i=2800; i>0; i-- )); do
+for (( i=3000; i>0; i-- )); do
     echo "$i 秒剩餘..."
     sleep 1
 done
