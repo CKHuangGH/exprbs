@@ -4,7 +4,8 @@ cluster=$1
 apt-get update
 sudo apt-get install vim -y
 sudo apt-get install net-tools -y
-sudo apt install python3-pip -y
+sudo apt-get install python3-pip -y
+sudo apt-get install jq -y
 # pip3 install kubernetes
 # pip3 install pandas==1.5.3
 # pip3 install pint
@@ -17,7 +18,13 @@ sudo apt install python3-pip -y
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-amd64" && sudo install -c -m 0755 vcluster /usr/local/bin && rm -f vcluster
 
+wget https://github.com/kubernetes-sigs/kwok/releases/download/v0.3.0/kwok-linux-amd64
+chmod +x kwok-linux-amd64
+sudo mv kwok-linux-amd64 /usr/local/bin/kwok
 
+wget https://github.com/kubernetes-sigs/kwok/releases/download/v0.3.0/kwokctl-linux-amd64
+chmod +x kwokctl-linux-amd64
+sudo mv kwokctl-linux-amd64 /usr/local/bin/kwokctl
 
 #modify the address for kubeproxy
 echo "copy metrics_server.yaml-----------------------"
