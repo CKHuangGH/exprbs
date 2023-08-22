@@ -25,3 +25,5 @@ EOF
     clusteradm create work test$i -f - <<< "$deployment_yaml" --cluster cluster1
 	
 done
+echo "All deployments created." >> number.txt
+echo $(date +'%s.%N') >> number.txt
