@@ -2,17 +2,16 @@ cp ../node_list node_list
 cp ../node_list_all node_list_all
 mkdir results
 
-input_file="node_list_all"    # 输入文件路径
-output_file="node_exec"  # 输出文件路径
+input_file="node_list_all"
+output_file="node_exec"
 
 if [ -f "$input_file" ]; then
     last_line=$(tail -n 1 "$input_file")
     
-    # 将最后一行数据写入新文件
     echo "$last_line" > "$output_file"
-    echo "已将最后一行数据写入 $output_file"
+    echo "save to $output_file"
 else
-    echo "输入文件不存在: $input_file"
+    echo "fail to open $input_file"
 fi
 
 while read line
@@ -39,6 +38,7 @@ do
 done
 tcpdump -i ens3 port 6443 -nn -q >> cross  &
 
+echo "waiting 180 secs"
 sleep 180
 
 echo $number
@@ -59,7 +59,7 @@ done
 
 echo "wait for 3000 secs"
 for (( i=3000; i>0; i-- )); do
-    echo "$i 秒剩餘..."
+    echo "$i ..."
     sleep 1
 done
 
