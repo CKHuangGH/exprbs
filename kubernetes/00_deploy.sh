@@ -4,6 +4,8 @@ ls /root/.kube/
 read -p "please enter the last cluster number in .kube: " number
 
 ./combineAll.sh $number
+./01_cicd_clusteradm.sh
+./02_ocm.sh
 
 # mkdir /root/.kube/temp
 # mv /root/.kube/config /root/.kube/temp/config
