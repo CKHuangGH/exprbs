@@ -40,8 +40,10 @@ ip2=$(echo $line | cut -d "." -f 3)
 break
 done < node_list_all
 
-ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 mkdir /root/.kube
-scp /root/.kube/config root@10.$ip1.$ip2.3:/root/.kube
+#ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 mkdir /root/.kube
+#scp /root/.kube/config root@10.$ip1.$ip2.3:/root/.kube
+
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
 cluster=1
 for i in $(cat node_list)
@@ -86,7 +88,7 @@ for i in `seq 0 0`
 do
     kubectl config use-context cluster$i
 	helm repo update
-	helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i
+	helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i --operator.replicas 1
 done
 
 for i in `seq 0 0`
@@ -94,4 +96,5 @@ do
     kubectl --context=cluster$i create -f metrics_server.yaml
 done
 sleep 5
+
 echo "-------------------------------------- OK --------------------------------------"
