@@ -12,9 +12,9 @@ sleep 30
 ./02_ocm.sh
 echo "wait 30s"
 sleep 30
-cd stress/
-echo "Good2run"
 
-# mkdir /root/.kube/temp
-# mv /root/.kube/config /root/.kube/temp/config
-# mv /root/.kube/cluster0 /root/.kube/config
+
+echo "Good 2 check"
+
+kubectl get pod -A
+kubectl get pod -A --context cluster1
