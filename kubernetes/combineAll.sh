@@ -65,6 +65,7 @@ sudo apt-get install jq -y
 # pip3 install prometheus_api_client
 # pip3 install aiohttp
 sudo apt install git -y
+sudo apt-get install docker.io -y
 
 # Install helm3
 echo "Helm3"
