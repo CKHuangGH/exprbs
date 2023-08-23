@@ -19,19 +19,10 @@ sudo apt install git -y
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-amd64" && sudo install -c -m 0755 vcluster /usr/local/bin && rm -f vcluster
 
-wget https://github.com/kubernetes-sigs/kwok/releases/download/v0.3.0/kwok-linux-amd64
-chmod +x kwok-linux-amd64
-sudo mv kwok-linux-amd64 /usr/local/bin/kwok
-
-wget https://github.com/kubernetes-sigs/kwok/releases/download/v0.3.0/kwokctl-linux-amd64
-chmod +x kwokctl-linux-amd64
-sudo mv kwokctl-linux-amd64 /usr/local/bin/kwokctl
-
 #modify the address for kubeproxy
 echo "copy metrics_server.yaml-----------------------"
 mv /root/exprbs/kubernetes/metrics_server.yaml /root/
-mv /root/exprbs/kubernetes/fakenode.yaml /root/
-
+cp /root/exprbs/kubernetes/node_list /root/
 
 echo "Install Helm3-----------------------"
 wget -c https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
@@ -52,5 +43,25 @@ helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --name
 
 echo "Install Metrics server-----------------------"
 kubectl --context=cluster$cluster create -f metrics_server.yaml
-kubectl --context=cluster$cluster create -f fakenode.yaml
+
+tail -n +2 node_list > try_list
+
+ip=$(cat try_list)
+
+for i in {2..101}
+do
+  new_ip=$(echo $ip | sed "s/\.1$/.$i/")
+  echo "$new_ip" >> node_ip
+done
+
+while IFS= read -r ip_address; do
+  echo "send to $ip_address"
+  scp -o StrictHostKeyChecking=no nginx.tar root@$ip_address:/root/
+done < "node_ip.txt"
+
+while IFS= read -r ip_address; do
+  echo "import to $ip_address"
+  ssh -o StrictHostKeyChecking=no root@$ip_address ctr -n k8s.io images import nginx.tar &
+done < "node_ip.txt"
+
 echo "-----------------------Member cluster$cluster is ready----------------------"

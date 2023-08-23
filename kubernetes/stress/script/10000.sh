@@ -19,7 +19,8 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx
+          image: docker.io/library/nginx:latest
+          imagePullPolicy: Never
 EOF
 )
     clusteradm create work test$i -f - <<< "$deployment_yaml" --cluster cluster1
