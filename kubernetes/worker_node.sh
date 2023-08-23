@@ -44,24 +44,4 @@ helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --name
 echo "Install Metrics server-----------------------"
 kubectl --context=cluster$cluster create -f metrics_server.yaml
 
-tail -n +2 node_list > try_list
-
-ip=$(cat try_list)
-
-for i in {2..101}
-do
-  new_ip=$(echo $ip | sed "s/\.1$/.$i/")
-  echo "$new_ip" >> node_ip
-done
-
-while IFS= read -r ip_address; do
-  echo "send to $ip_address"
-  scp -o StrictHostKeyChecking=no nginx.tar root@$ip_address:/root/
-done < "node_ip.txt"
-
-while IFS= read -r ip_address; do
-  echo "import to $ip_address"
-  ssh -o StrictHostKeyChecking=no root@$ip_address ctr -n k8s.io images import nginx.tar &
-done < "node_ip.txt"
-
 echo "-----------------------Member cluster$cluster is ready----------------------"
