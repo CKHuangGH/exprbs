@@ -7,6 +7,9 @@ sudo apt-get install net-tools -y
 sudo apt-get install python3-pip -y
 sudo apt-get install jq -y
 sudo apt install git -y
+sudo apt install ntpdate -y
+sudo service ntp stop
+sudo ntpdate ntp.midway.ovh
 # pip3 install kubernetes
 # pip3 install pandas==1.5.3
 # pip3 install pint

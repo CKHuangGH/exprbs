@@ -67,7 +67,9 @@ sudo apt-get install jq -y
 # pip3 install prometheus_api_client
 # pip3 install aiohttp
 sudo apt install git -y
-sudo apt-get install docker.io -y
+sudo apt install ntpdate -y
+sudo service ntp stop
+sudo ntpdate ntp.midway.ovh
 
 # Install helm3
 echo "Helm3"

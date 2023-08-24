@@ -6,7 +6,7 @@ update_file_podCM() {
   echo $(date +'%s.%N') | tee --append $NameForPodCM;
 }
 
-while ((PodCMTime < 14400))
+while ((PodCMTime < 54000))
 do
   update_file_podCM
   sleep $TimerForPodCM;

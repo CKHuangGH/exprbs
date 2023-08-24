@@ -6,7 +6,7 @@ update_file_podVC() {
   echo $(date +'%s.%N') | tee --append $NameForPodVC;
 }
 
-while ((PodVCTime < 14400))
+while ((PodVCTime < 54000))
 do
   update_file_podVC
   sleep $TimerForPodVC;

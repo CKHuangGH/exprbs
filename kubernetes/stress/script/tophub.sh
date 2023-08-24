@@ -6,7 +6,7 @@ update_file_podHUB() {
   echo $(date +'%s.%N') | tee --append $NameForPodHUB;
 }
 
-while ((PodHUBTime < 14400))
+while ((PodHUBTime < 54000))
 do
   update_file_podHUB
   sleep $TimerForPodHUB;

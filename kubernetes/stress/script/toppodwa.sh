@@ -6,7 +6,7 @@ update_file_podwa() {
   echo $(date +'%s.%N') | tee --append $NameForPodwa;
 }
 
-while ((PodwaTime < 14400))
+while ((PodwaTime < 54000))
 do
   update_file_podwa
   sleep $TimerForPodwa;
