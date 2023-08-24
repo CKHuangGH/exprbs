@@ -10,6 +10,7 @@ sudo apt install git -y
 sudo apt install ntpdate -y
 sudo service ntp stop
 sudo ntpdate ntp.midway.ovh
+sudo service ntp start
 # pip3 install kubernetes
 # pip3 install pandas==1.5.3
 # pip3 install pint

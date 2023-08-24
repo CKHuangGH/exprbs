@@ -70,6 +70,7 @@ sudo apt install git -y
 sudo apt install ntpdate -y
 sudo service ntp stop
 sudo ntpdate ntp.midway.ovh
+sudo service ntp start
 
 # Install helm3
 echo "Helm3"
