@@ -20,3 +20,6 @@ random_number=$((1 + $RANDOM))
 scp -o StrictHostKeyChecking=no -r /root/exprbs/kubernetes/stress/results chuang@172.16.111.106:/home/chuang/results$number-$random_number
 
 echo "-----------------------copy ok -------------------------------"
+
+sleep 5
+ssh -o StrictHostKeyChecking=no chuang@172.16.111.106 . /home/chuang/k8s_g5k/sdfcp/del.sh &
