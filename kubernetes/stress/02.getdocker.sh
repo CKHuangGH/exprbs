@@ -21,5 +21,5 @@ scp -o StrictHostKeyChecking=no -r /root/exprbs/kubernetes/stress/results chuang
 
 echo "-----------------------copy ok -------------------------------"
 
-sleep 5
+sleep 300
 ssh -o StrictHostKeyChecking=no chuang@172.16.111.106 . /home/chuang/k8s_g5k/sdfcp/del.sh &
