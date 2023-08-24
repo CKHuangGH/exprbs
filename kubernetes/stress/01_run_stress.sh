@@ -36,7 +36,7 @@ do
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppoddns.sh > /dev/null &
 	j=$((j+1))
 done
-tcpdump -i ens3 port 6443 -nn -q >> cross  &
+tcpdump -i ens3 port 6443 -nn -q >> cross &
 
 echo "waiting 180 secs"
 sleep 180
