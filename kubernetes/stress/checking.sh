@@ -6,11 +6,11 @@ SLEEP_INTERVAL=1  # 檢查狀態的間隔時間（秒）
 # 等待所有Pod都變成運行狀態
 while true; do
     running_pods=$(kubectl get pods -A -l $LABEL_SELECTOR --field-selector=status.phase=Running --no-headers --context cluster1 | wc -l)
-    echo "deployment: "$running_pods
+    echo "pods: "$running_pods
     if [ "$running_pods" -eq "$NUM_PODS" ]; then
         current_time=$(date +'%s.%N')
-        echo timeforpods >> timeforend.txt
-        echo $current_time >> timeforend.txt
+        echo timeforpods >> number.txt
+        echo $current_time >> number.txt
         break
     else
         sleep $SLEEP_INTERVAL
