@@ -18,3 +18,5 @@ echo "Good 2 check"
 
 kubectl get pod -A
 kubectl get pod -A --context cluster1
+kubectl get pod -A | wc -l
+kubectl get pod -A --context cluster1 | wc -l
