@@ -52,6 +52,7 @@ echo $(date +'%s.%N') >> number.txt
 g=1
 for i in $(cat node_exec)
 do 
+    ssh root@$i . /root/exprbs/kubernetes/stress/checking_deployment.sh $number
     ssh root@$i . /root/exprbs/kubernetes/stress/checking.sh $number
 	g=$((g+1))
 done
