@@ -48,6 +48,4 @@ helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --name
 echo "Install Metrics server-----------------------"
 kubectl --context=cluster$cluster create -f metrics_server.yaml
 
-kubectl get secret --all-namespaces -o json | jq -r '.items[] | select(.metadata.name == "external-managed-kubeconfig") | .data.kubeconfig' | base64 --decode > kubeconfig.yaml
-
 echo "-----------------------Member cluster$cluster is ready----------------------"

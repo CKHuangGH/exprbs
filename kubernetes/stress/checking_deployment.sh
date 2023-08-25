@@ -1,5 +1,5 @@
 numberofpod=$1
-result=$((original_number / 10))
+result=$((numberofpod / 10))
 LABEL_SELECTOR="vcluster.loft.sh/namespace=default"
 NUM_PODS=$result # 修改為您的Pod數量
 SLEEP_INTERVAL=1  # 檢查狀態的間隔時間（秒）
