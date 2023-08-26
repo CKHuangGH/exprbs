@@ -111,12 +111,12 @@ done
 
 while IFS= read -r ip_address; do
   echo "send to $ip_address"
-  scp /root/nginx.tar root@$ip_address:/root/
+  scp -o StrictHostKeyChecking=no /root/nginx.tar root@$ip_address:/root/
 done < "node_ip"
 
 while IFS= read -r ip_address; do
   echo "import to $ip_address"
-  ssh root@$ip_address ctr -n k8s.io images import nginx.tar &
+  ssh -o StrictHostKeyChecking=no root@$ip_address ctr -n k8s.io images import nginx.tar &
 done < "node_ip"
 
 
