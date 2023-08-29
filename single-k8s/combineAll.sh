@@ -61,7 +61,7 @@ done
 sleep 5
 
 
-ip=$(cat node_list_all)
+ip=$(cat node_list)
 
 for i in {2..101}
 do
