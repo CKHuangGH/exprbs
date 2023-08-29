@@ -4,7 +4,7 @@ target="<cluster_name>"
 replacement="cluster1"
 
 target2="--mode multi-mgt"
-replacement2="--mode hosted --kubeconfig /root/.kube/cluster1"
+replacement2="--mode hosted --managed-cluster-kubeconfig /root/.kube/config "
 
 input_file="run.sh"
 
