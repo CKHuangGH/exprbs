@@ -21,5 +21,5 @@ kubectl get pod -A --context cluster1
 kubectl get node -A | wc -l
 kubectl get node -A --context cluster1 | wc -l
 
-kubectl get pod -A -l app=klusterlet-manifestwork-agent
-kubectl get pod -A -l app=vcluster
+kubectl get pod -A -l app=klusterlet-manifestwork-agent --context cluster1
+kubectl get pod -A -l app=vcluster --context cluster1
