@@ -16,4 +16,6 @@ do
 	ssh root@$i 'bash -s' < run.sh
 done
 
+sleep 10
+
 clusteradm accept --clusters cluster1
