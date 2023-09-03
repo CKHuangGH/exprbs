@@ -14,6 +14,16 @@ else
     echo "fail to open $input_file"
 fi
 
+while read -r ip; do
+    # 忽略空行和注释行
+    if [[ "$ip" =~ ^[[:space:]]*$ || "$ip" =~ ^\s*# ]]; then
+        continue
+    fi
+
+    # 执行ping命令
+    ping -c 4 "$ip" > number.txt  # 这里的-c 4表示ping 4次，您可以根据需要更改
+done < "node_list"
+
 while read line
 do 
 echo $line
@@ -44,7 +54,7 @@ echo "waiting 180 secs"
 sleep 180
 scp root@$(cat node_exec):/root/kubeconfig.yaml /root/kubeconfig.yaml
 echo $number
-echo $number > number.txt
+echo $number >> number.txt
 echo "start deployment" >> number.txt
 echo $(date +'%s.%N') >> number.txt
 . ./script/$number.sh > /dev/null &
