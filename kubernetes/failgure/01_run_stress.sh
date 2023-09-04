@@ -14,29 +14,17 @@ else
     echo "fail to open $input_file"
 fi
 
-while read line
-do 
-echo $line
-ip1=$(echo $line | cut -d "." -f 2)
-ip2=$(echo $line | cut -d "." -f 3)
-break
-done < node_list_all
-
-read -p "please enter the test number(2000, 4000, 6000, 8000, 10000): " number
-
-. ./script/topcm.sh > /dev/null &
-. ./script/tophub.sh > /dev/null &
 j=1
 for i in $(cat node_exec)
 do 
-	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodwa.sh > /dev/null &
-	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodvc.sh > /dev/null &
-	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodra.sh > /dev/null &
-	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodkl.sh > /dev/null &
-	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppoddns.sh > /dev/null &
+	for ((q=1; q<=10; q++)); 
+	do
+		ssh root@$i  kubectl delete pod -A -l app=vcluster
+		ssh root@$i . /root/exprbs/kubernetes/failgure/checking.sh
+		
+	done
 	j=$((j+1))
 done
-tcpdump -i ens3 port 6443 -nn -q >> cross &
 
 echo "waiting 180 secs"
 sleep 180
