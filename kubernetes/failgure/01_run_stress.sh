@@ -18,7 +18,8 @@ j=1
 for i in $(cat node_exec)
 do 
 	for ((q=1; q<=10; q++)); 
-	do
+	do	
+		echo "start del" >> number.txt
 		ssh root@$i  kubectl delete pod -A -l app=vcluster
 		ssh root@$i . /root/exprbs/kubernetes/failgure/checking.sh
 		
@@ -31,7 +32,7 @@ sleep 180
 
 echo $number
 echo $number > number.txt
-echo "start deployment" >> number.txt
+
 echo $(date +'%s.%N') >> number.txt
 . ./script/$number.sh > /dev/null &
 
