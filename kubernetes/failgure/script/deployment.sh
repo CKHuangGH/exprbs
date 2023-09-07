@@ -1,6 +1,6 @@
-
+number=$1
 # 迴圈 500 次
-for ((i=1; i<=400; i++)); do
+for ((i=1; i<=$number; i++)); do
     deployment_yaml=$(cat <<EOF
 apiVersion: apps/v1
 kind: Deployment
@@ -8,7 +8,7 @@ metadata:
   name: nginx-$i
   namespace: default
 spec:
-  replicas: 10
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
