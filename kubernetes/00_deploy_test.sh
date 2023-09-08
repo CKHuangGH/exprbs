@@ -4,6 +4,13 @@ ls /root/.kube/
 read -p "please enter the last cluster number in .kube: " number
 
 ./combineAll.sh $number
+echo "wait 30s"
+sleep 30
+./01_cicd_clusteradm.sh
+echo "wait 30s"
+sleep 30
+./02_ocm_test.sh
+echo "wait 30s"
 
 echo "Good 2 check"
 
