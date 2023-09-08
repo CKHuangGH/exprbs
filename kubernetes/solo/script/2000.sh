@@ -1,5 +1,4 @@
 
-# 迴圈 500 次
 for ((i=1; i<=200; i++)); do
     deployment_yaml=$(cat <<EOF
 apiVersion: apps/v1
@@ -23,7 +22,7 @@ spec:
           imagePullPolicy: Never
 EOF
 )
-    clusteradm create work test$i -f - <<< "$deployment_yaml" --cluster cluster1
+    kubectl --kubeconfig=/root/kubeconfig.yaml apply -f - <<< "$deployment_yaml"
 	
 done
 echo "All deployments created." >> number.txt

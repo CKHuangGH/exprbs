@@ -15,13 +15,11 @@ else
 fi
 
 while read -r ip; do
-    # 忽略空行和注释行
     if [[ "$ip" =~ ^[[:space:]]*$ || "$ip" =~ ^\s*# ]]; then
         continue
     fi
 
-    # 执行ping命令
-    ping -c 4 "$ip" > number.txt  # 这里的-c 4表示ping 4次，您可以根据需要更改
+    ping -c 4 "$ip" > number.txt
 done < "node_list"
 
 while read line

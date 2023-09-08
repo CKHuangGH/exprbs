@@ -23,7 +23,7 @@ spec:
           imagePullPolicy: Never
 EOF
 )
-    kubectl --kubeconfig=kubeconfig.yaml apply -f - <<< "$deployment_yaml"
+    kubectl --kubeconfig=/root/kubeconfig.yaml apply -f - <<< "$deployment_yaml"
 	
 done
 echo "All deployments created." >> number.txt
