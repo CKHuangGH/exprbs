@@ -10,9 +10,6 @@ sleep 30
 echo "wait 30s"
 sleep 30
 ./02_ocm.sh
-echo "wait 30s"
-sleep 30
-./03_timedelay.sh
 
 echo "Good 2 check"
 
