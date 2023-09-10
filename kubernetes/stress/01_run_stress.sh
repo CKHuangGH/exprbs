@@ -39,7 +39,7 @@ read -p "please enter the test number(2000, 4000, 6000, 8000, 10000): " number
 j=1
 for i in $(cat node_exec)
 do 
-	ssh root@$i . /root/exprbs/kubernetes/stress/script/getconfig.sh > /dev/null
+	ssh root@$i . /root/exprbs/kubernetes/stress/script/getconfig.sh
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodwa.sh > /dev/null &
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodvc.sh > /dev/null &
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodra.sh > /dev/null &
@@ -63,8 +63,8 @@ echo $(date +'%s.%N') >> number.txt
 . ./checking.sh $number
 g=1
 
-echo "wait for 3000 secs"
-for (( i=3000; i>0; i-- )); do
+echo "wait for 7200 secs"
+for (( i=7200; i>0; i-- )); do
     echo "$i ..."
     sleep 1
 done

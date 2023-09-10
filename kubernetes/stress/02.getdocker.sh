@@ -1,8 +1,10 @@
 number=$1
 j=1
+
 for i in $(cat node_exec)
 do 
-
+	ssh root@$i . /root/exprbs/kubernetes/stress/script/getlog.sh
+	scp root@$i:/root/logs.txt /root/exprbs/kubernetes/stress/results/logs.txt
 	scp root@$i:/root/kubetopPodDNS.csv /root/exprbs/kubernetes/stress/results/kubetopPodDNS.csv
 	scp root@$i:/root/kubetopPodWA.csv /root/exprbs/kubernetes/stress/results/kubetopPodWA.csv
 	scp root@$i:/root/kubetopPodRA.csv /root/exprbs/kubernetes/stress/results/kubetopPodRA.csv
