@@ -11,4 +11,4 @@
 # clusteradm create work recommendationservice -f google-demo/recommendationservice.yaml --clusters cluster1
 # clusteradm create work redis -f google-demo/redis.yaml --clusters cluster1
 # clusteradm create work shippingservice -f google-demo/shippingservice.yaml --clusters cluster1
-clusteradm create work google-demo -f google-demo/kubernetes-manifests.yaml --clusters cluster1
+clusteradm create work google-demo -f kubernetes-manifests.yaml --clusters cluster1

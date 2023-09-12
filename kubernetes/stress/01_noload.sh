@@ -29,12 +29,12 @@ read -p "please enter the test number(2000, 4000, 6000, 8000, 10000): " number
 j=1
 for i in $(cat node_exec)
 do 
-	#ssh root@$i . /root/exprbs/kubernetes/stress/script/getconfig.sh > /dev/null
+	ssh root@$i . /root/exprbs/kubernetes/stress/script/getconfig.sh > /dev/null
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodwa.sh > /dev/null &
-	#ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodvc.sh > /dev/null &
+	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodvc.sh > /dev/null &
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodra.sh > /dev/null &
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodkl.sh > /dev/null &
-	#ssh root@$i . /root/exprbs/kubernetes/stress/script/toppoddns.sh > /dev/null &
+	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppoddns.sh > /dev/null &
 	j=$((j+1))
 done
 
@@ -42,7 +42,7 @@ tcpdump -i ens3 port 6443 -nn -q >> cross &
 
 echo "waiting 180 secs"
 sleep 180
-#scp root@$(cat node_exec):/root/kubeconfig.yaml /root/kubeconfig.yaml
+scp root@$(cat node_exec):/root/kubeconfig.yaml /root/kubeconfig.yaml
 echo $number
 echo $number > number.txt
 echo "start deployment" >> number.txt
@@ -51,7 +51,7 @@ echo $(date +'%s.%N') >> number.txt
 g=1
 
 echo "wait for 3000 secs"
-for (( i=3000; i>0; i-- )); do
+for (( i=18900; i>0; i-- )); do
     echo "$i ..."
     sleep 1
 done

@@ -63,9 +63,9 @@ echo $(date +'%s.%N') >> number.txt
 . ./checking_ocm.sh $number
 g=1
 
-echo "wait for 3000 secs"
-for (( i=3000; i>0; i-- )); do
-    echo "$i ..."
+echo "wait for 18900 secs"
+for (( i=18900; i>0; i-- )); do
+    echo "$i secs..."
     sleep 1
 done
 
