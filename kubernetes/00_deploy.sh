@@ -11,8 +11,8 @@ echo "wait 30s"
 sleep 30
 ./02_ocm.sh
 sleep 30
-#./03_timedelay.sh
-#echo "Good 2 check"
+./03_timedelay.sh
+echo "Good 2 check"
 
 kubectl get pod -A
 kubectl get pod -A --context cluster1

@@ -10,9 +10,9 @@ sleep 30
 echo "wait 60s"
 sleep 60
 ./02_ocm_hosted.sh
-#echo "wait 30s"
+echo "wait 30s"
 sleep 30
-#./03_timedelay.sh
+./03_timedelay.sh
 
 echo "Good 2 check"
 
