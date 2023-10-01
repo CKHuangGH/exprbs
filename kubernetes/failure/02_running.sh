@@ -21,13 +21,10 @@ do
 	do	
 		echo "start del" >> number.txt
 		ssh root@$i  kubectl delete pod -A -l app=vcluster
-		ssh root@$i . /root/exprbs/kubernetes/failgure/checking.sh
+		ssh root@$i . /root/exprbs/kubernetes/failure/checking.sh
 	done
 	j=$((j+1))
 done
-
-echo $number
-echo $number > number.txt
 
 echo $(date +'%s.%N') >> number.txt
 . ./script/$number.sh > /dev/null &
