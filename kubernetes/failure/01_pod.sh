@@ -22,13 +22,9 @@ do
 		echo "start del" >> number.txt
 		ssh root@$i  kubectl delete pod -A -l app=vcluster
 		ssh root@$i . /root/exprbs/kubernetes/failgure/checking.sh
-		
 	done
 	j=$((j+1))
 done
-
-echo "waiting 180 secs"
-sleep 180
 
 echo $number
 echo $number > number.txt
