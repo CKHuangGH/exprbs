@@ -30,8 +30,4 @@ do
 	j=$((j+1))
 done
 sleep 5
-echo "kubectl get pods -A -l vcluster.loft.sh/namespace=default"
-kubectl get pods -A -l vcluster.loft.sh/namespace=default
-echo "kubectl get events -A --field-selector involvedObject.name=vcluster-0 --no-headers | grep Killing | grep Stopping.container.vcluster | wc -l"
-kubectl get events -A --field-selector involvedObject.name=vcluster-0 --no-headers | grep Killing | grep Stopping.container.vcluster | wc -l 
 . 03.getdocker.sh
