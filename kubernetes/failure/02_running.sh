@@ -30,4 +30,4 @@ do
 	j=$((j+1))
 done
 sleep 5
-. 03.getdocker.sh $number
+. 03.getdocker.sh
