@@ -17,7 +17,7 @@ while true; do
   fi
 
   # Wait for some time before checking again
-  sleep 1
+  sleep 0.5
 done
 
 echo "Check completed, exiting the loop"

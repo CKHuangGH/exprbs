@@ -17,32 +17,17 @@ fi
 j=1
 for i in $(cat node_exec)
 do 
-	for ((q=1; q<=1; q++)); 
+	ssh root@$i . /root/exprbs/kubernetes/failure/checking.sh &
+	for ((q=1; q<=10; q++)); 
 	do	
-		echo "start del" >> number.txt
+		ssh root@$i echo "$q start del" >> number.txt
+		ssh root@$i echo $(date +'%s.%N') >> number.txt
 		ssh root@$i  kubectl delete pod -A -l app=vcluster
-		ssh root@$i . /root/exprbs/kubernetes/failure/checking.sh
+		ssh root@$i echo "$q del end" >> number.txt
+		ssh root@$i echo $(date +'%s.%N') >> number.txt
+		ssh root@$i . /root/exprbs/kubernetes/failure/checking-vc.sh
 	done
 	j=$((j+1))
 done
-
-echo $(date +'%s.%N') >> number.txt
-. ./script/$number.sh > /dev/null &
-
-
-
-g=1
-for i in $(cat node_exec)
-do 
-    ssh root@$i . /root/exprbs/kubernetes/stress/checking.sh $number
-	g=$((g+1))
-done
-
-
-echo "wait for 3000 secs"
-for (( i=3000; i>0; i-- )); do
-    echo "$i ..."
-    sleep 1
-done
-
-. 02.getdocker.sh $number
+sleep 5
+. 03.getdocker.sh $number
