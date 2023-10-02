@@ -18,11 +18,11 @@ j=1
 for i in $(cat node_exec)
 do 
 	ssh root@$i . /root/exprbs/kubernetes/failure/checking.sh &
-	for ((q=1; q<=10; q++)); 
+	for ((q=1; q<=100; q++)); 
 	do	
 		ssh root@$i echo "$q start del" >> number.txt
 		ssh root@$i echo $(date +'%s.%N') >> number.txt
-		ssh root@$i  kubectl delete pod -A -l app=vcluster
+		ssh root@$i kubectl delete pod -A -l app=vcluster
 		ssh root@$i echo "$q del end" >> number.txt
 		ssh root@$i echo $(date +'%s.%N') >> number.txt
 		ssh root@$i . /root/exprbs/kubernetes/failure/checking-vc.sh
