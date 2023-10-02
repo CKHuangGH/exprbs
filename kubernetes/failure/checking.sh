@@ -4,7 +4,7 @@ SLEEP_INTERVAL=1
 first_time=true
 while true; do
     running_pods=$(kubectl get pods -A -l vcluster.loft.sh/namespace=default --field-selector=status.phase=Running --no-headers | wc -l)
-    echo "deployment: "$running_pods
+    #echo "deployment: "$running_pods
     if [ "$running_pods" -eq "$NUM_PODS" ]; then
         sleep $SLEEP_INTERVAL
     else
