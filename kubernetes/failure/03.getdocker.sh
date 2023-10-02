@@ -2,6 +2,7 @@ j=1
 for i in $(cat node_exec)
 do 
 	scp root@$i:/root/number.txt /root/exprbs/kubernetes/failure/results/number.txt
+	ssh root@$i . /root/exprbs/kubernetes/failure/show.sh
 	j=$((j+1))	
 done
 
