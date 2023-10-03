@@ -103,7 +103,7 @@ sleep 5
 
 ip=$(cat node_list)
 
-for i in {2..6}
+for i in {2..101}
 do
   new_ip=$(echo $ip | sed "s/\.1$/.$i/")
   echo "$new_ip" >> node_ip
