@@ -7,7 +7,7 @@ namespaces=$(kubectl get namespace | grep -E '^mgt' | awk '{print $1}')
 echo "匹配的命名空间列表："
 echo "$namespaces"
 
-echo "kubectl get pods -n $namespaces"
+echo "Command: kubectl get pods -n $namespaces"
 kubectl get pods -n $namespaces
-echo "kubectl get events -A --field-selector involvedObject.name=vcluster-0 --no-headers | grep Killing | grep Stopping.container.vcluster | wc -l"
-kubectl get events -A --field-selector involvedObject.name=vcluster-0 --no-headers | grep Killing | grep Stopping.container.vcluster | wc -l 
+echo -e "Command: kubectl get events -A --field-selector involvedObject.name=vcluster-0 --no-headers \n | grep Killing | grep Stopping.container.vcluster | wc -l"
+kubectl get events -A --field-selector involvedObject.name=vcluster-0 --no-headers | grep Killing | grep Stopping.container.vcluster | wc -l
