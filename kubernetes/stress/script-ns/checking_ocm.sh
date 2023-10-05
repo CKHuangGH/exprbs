@@ -1,6 +1,6 @@
 numberofpod=$1
 LABEL_SELECTOR="vcluster.loft.sh/managed-by=vcluster"
-NUM_PODS=10001  # 修改為您的Pod數量
+NUM_PODS=10000  # 修改為您的Pod數量
 SLEEP_INTERVAL=1  # 檢查狀態的間隔時間（秒）
 
 # 等待所有Pod都變成運行狀態
