@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+  namespace: default
+spec:
+  storageClassName: local-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests: 
+      storage: 500Mi
+  volumeName: my-pv
+  
+
+# apiVersion: work.open-cluster-management.io/v1
+# kind: ManifestWork
+# metadata:
+#   namespace: cluster1
+#   name: pvc-test
+# spec:
+#   manifestConfigs:
+#     - resourceIdentifier:
+#         group: ""
+#         resource: PersistentVolumeClaim
+#         namespace: default
+#         name: my-pvc
+#       updateStrategy:
+#         type: ServerSideApply
+#   workload:
+#     manifests:
+#       - apiVersion: v1
+#         kind: PersistentVolumeClaim
+#         metadata:
+#           name: my-pvc
+#           namespace: default
+#         spec:
+#           storageClassName: manual
+#           accessModes:
+#             - ReadWriteOnce
+#           resources:
+#             requests: 
+#               storage: 500Mi
