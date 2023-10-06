@@ -25,8 +25,8 @@ curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/downloa
 
 #modify the address for kubeproxy
 echo "copy metrics_server.yaml-----------------------"
-mv /root/exprbs/kubernetes/metrics_server.yaml /root/
-cp /root/exprbs/kubernetes/node_list /root/
+mv /root/exprbs/12m/metrics_server.yaml /root/
+cp /root/exprbs/12m/node_list /root/
 
 echo "Install Helm3-----------------------"
 wget -c https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz

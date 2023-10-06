@@ -19,5 +19,5 @@ cp /root/go/bin/clusteradm /usr/local/bin/clusteradm
 cd ..
 for i in $(cat node_list)
 do
-	scp /root/go/bin/clusteradm root@$i:/usr/local/bin/
+	scp /root/go/bin/clusteradm root@$i:/usr/local/bin/ &
 done
