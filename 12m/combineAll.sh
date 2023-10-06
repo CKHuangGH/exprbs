@@ -52,7 +52,7 @@ do
 	scp /root/.kube/config root@$i:/root/.kube
 	ssh root@$i chmod 777 /root/exprbs/kubernetes/worker_node.sh
 	ssh root@$i sh /root/exprbs/kubernetes/worker_node.sh $cluster &
-	ssh root@$i kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+	ssh root@$i kubectl taint nodes --all node-role.kubernetes.io/control-plane:NoSchedule-
 	cluster=$((cluster+1))
 	sleep 2
 done
