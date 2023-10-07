@@ -52,7 +52,7 @@ do
 	scp /root/.kube/config root@$i:/root/.kube
 	ssh root@$i chmod 777 /root/exprbs/12m/worker_node.sh
 	ssh root@$i sh /root/exprbs/12m/worker_node.sh $cluster &
-	ssh root@$i kubectl taint nodes $(hostname) node-role.kubernetes.io/control-plane:NoSchedule-
+	ssh root@$i kubectl taint nodes --all node-role.kubernetes.io/control-plane:NoSchedule-
 	cluster=$((cluster+1))
 	sleep 2
 done
@@ -90,14 +90,14 @@ cp /usr/local/go/bin/go /usr/local/bin
 
 for i in `seq 0 0`
 do
-    kubectl config use-context cluster$i
+  kubectl config use-context cluster$i
 	helm repo update
 	helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i --set operator.replicas=1
 done
 
 for i in `seq 0 0`
 do
-    kubectl --context=cluster$i create -f metrics_server.yaml
+  kubectl --context=cluster$i create -f metrics_server.yaml
 done
 sleep 5
 
