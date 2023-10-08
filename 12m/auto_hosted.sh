@@ -3,7 +3,7 @@ cluster=1
 for i in $(cat node_list)
 do
 	target="<cluster_name>"
-	replacement="cluster1"
+	replacement="cluster${cluster}"
 
 	target2="--mode multi-mgt"
 	replacement2="--mode hosted --managed-cluster-kubeconfig \/root\/.kube\/config "
