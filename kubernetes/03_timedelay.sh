@@ -19,4 +19,5 @@ while read -r ip; do
 
     # 执行ping命令
     ping -c 4 "$ip"  # 这里的-c 4表示ping 4次，您可以根据需要更改
+    break
 done < "node_list"
