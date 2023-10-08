@@ -7,11 +7,11 @@ read -p "please enter the last cluster number in .kube: " number
 echo "wait 30s"
 sleep 30
 ./01_cicd_clusteradm.sh
-echo "wait 60s"
-sleep 60
-./02_ocm_hosted.sh
-echo "wait 30s"
-sleep 30
+# echo "wait 60s"
+# sleep 60
+# ./02_ocm_hosted.sh
+# echo "wait 30s"
+# sleep 30
 #./03_timedelay.sh
 
 echo "Good 2 check"
