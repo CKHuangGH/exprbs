@@ -35,7 +35,7 @@ done < node_list_all
 read -p "please enter the test number(2000, 4000, 6000, 8000, 10000): " number
 
 . ./script-ns/namespace.sh
-
+sleep 1000
 . ./script/topcm.sh > /dev/null &
 . ./script/tophub.sh > /dev/null &
 j=1
