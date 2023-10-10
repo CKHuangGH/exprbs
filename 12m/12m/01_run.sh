@@ -26,5 +26,5 @@ for (( i=9000; i>0; i-- )); do
     echo "$i secs..."
     sleep 1
 done
-
+echo $(date +'%s.%N') >> number.txt
 . 02.getdocker.sh $number
