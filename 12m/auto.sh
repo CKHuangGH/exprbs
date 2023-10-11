@@ -12,8 +12,6 @@ do
 	sed "s/$target/$replacement/g" "$input_file" > "$temp_file"
 
 	mv "$temp_file" "$newname"
-	ssh root@$i kubectl taint nodes --all node-role.kubernetes.io/control-plane:NoSchedule-
-	sleep 1
 	ssh root@$i 'bash -s' < "$newname" &
 	cluster=$((cluster+1))
 done
