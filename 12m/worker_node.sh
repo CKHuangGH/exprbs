@@ -37,13 +37,14 @@ helm repo add cilium https://helm.cilium.io/
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 echo "wait for 5 secs-------------------------"
-sleep 5
+sleep 30
 
 echo "Install cilium-----------------------"
 kubectl config use-context cluster$cluster
 helm repo update
-helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --namespace kube-system --set cluster.name=cluster$cluster --set cluster.id=$cluster
+helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --namespace kube-system --set cluster.name=cluster$cluster --set cluster.id=$cluster --set operator.replicas=1
 
+sleep 30
 
 echo "Install Metrics server-----------------------"
 kubectl --context=cluster$cluster create -f metrics_server.yaml
