@@ -9,7 +9,7 @@ while read -r ip; do
     fi
 
     # 执行ping命令
-    ping -c 4 "$ip" > number.txt  # 这里的-c 4表示ping 4次，您可以根据需要更改
+    ping -c 4 "$ip" >> number.txt  # 这里的-c 4表示ping 4次，您可以根据需要更改
 done < "node_list"
 
 . ./script/topapi.sh > /dev/null &
