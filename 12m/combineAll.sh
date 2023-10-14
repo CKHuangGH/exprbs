@@ -53,7 +53,7 @@ do
 	ssh root@$i chmod 777 /root/exprbs/12m/worker_node.sh
 	ssh root@$i sh /root/exprbs/12m/worker_node.sh $cluster &
 	cluster=$((cluster+1))
-	sleep 4
+	sleep 5
 done
 
 apt-get update
