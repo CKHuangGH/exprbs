@@ -13,6 +13,5 @@ do
 
 	mv "$temp_file" "$newname"
 	ssh root@$i 'bash -s' < "$newname" &
-	sleep 5
 	cluster=$((cluster+1))
 done

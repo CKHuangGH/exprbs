@@ -1,10 +1,13 @@
 read -p "please enter the number of cluster: " number
-for i in {1..$number}
+for i in $(seq 1 $number)
 do
   ns="cluster$i"
   kubectl get ns $ns &>/dev/null
   if [ $? -ne 0 ]; then
     echo "缺少命名空间: $ns"
-	awk "NR==$ns" node_list
+	cluster=$(awk "NR==$i" node_list)
+	ssh root@$cluster helm uninstall cilium -n kube-system
+	ssh root@$cluster helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --namespace kube-system --set operator.replicas=1
+	ssh root@$cluster 'bash -s' < "run$i.sh"
   fi
 done

@@ -10,7 +10,7 @@ for i in $(cat node_list)
 do
     ssh root@$i kubectl taint nodes --all node-role.kubernetes.io/control-plane:NoSchedule-
 done
-sleep 5
+sleep 10
 ./auto.sh
 
 #clusteradm init --wait --context cluster1 &
