@@ -11,5 +11,8 @@ do
 	ssh root@$cluster 'bash -s' < "run$i.sh"
   sleep 3
   clusteradm accept --clusters cluster$i
+
   fi
 done
+sleep 10
+kubectl get ns --no-headers | wc -l
