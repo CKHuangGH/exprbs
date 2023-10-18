@@ -10,7 +10,7 @@ do
 	ssh root@$cluster helm uninstall cilium -n kube-system
 	ssh root@$cluster helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --namespace kube-system --set operator.replicas=1
 	ssh root@$cluster 'bash -s' < "run$i.sh"
-  sleep 3
+  sleep 5
   clusteradm accept --clusters cluster$i
 
   fi
