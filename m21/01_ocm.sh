@@ -8,7 +8,18 @@ done
 
 sleep 10
 
+cluster=1
 for i in $(cat node_list)
 do
-    ssh root@$i clusteradm init --wait > temp.sh &
+    ssh root@$i clusteradm init --wait > "temp${cluster}.sh" &
+    cluster=$((cluster+1))
 done
+
+# sleep 60
+
+# cluster=1
+# for i in $(cat node_list)
+# do
+# 	ssh root@$i sh /root/exprbs/m21/ready.sh $cluster
+#     cluster=$((cluster+1))
+# done
