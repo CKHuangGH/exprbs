@@ -15,6 +15,7 @@ do
     cluster=$((cluster+1))
 done
 
+./number.sh
 # sleep 60
 
 # cluster=1
