@@ -5,7 +5,7 @@ pod_status=$(kubectl get pods -n $namespace -o jsonpath='{.items[*].status.phase
 
 # Check for any non-running Pods
 if [[ $pod_status == *"Pending"* || $pod_status == *"CrashLoopBackOff"* || $pod_status == *"Error"* ]]; then
-  echo "There are non-running Pods. Take appropriate action."
+  echo "$pod_status status"
   kubectl get node
   helm uninstall cilium -n kube-system
   helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --namespace kube-system --set operator.replicas=1
