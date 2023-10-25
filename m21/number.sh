@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the desired count of files from user input
-desired_count=$(cat node_list | wc -c)
+desired_count=$(cat node_list | wc -l)
 echo "Number of desired files: $desired_count"
 # Continuously check if the number of files matches the user's input
 while true; do
