@@ -46,7 +46,7 @@ helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --name
 
 sleep 30
 
-echo "Install Metrics server-----------------------"
-kubectl --context=cluster$cluster create -f metrics_server.yaml
+# echo "Install Metrics server-----------------------"
+# kubectl --context=cluster$cluster create -f metrics_server.yaml
 
 echo "-----------------------Member cluster$cluster is ready----------------------"
