@@ -4,16 +4,7 @@ do
 done
 echo "wait 10 secs"
 sleep 10
-#!/bin/bash
 
-# Retrieve information for all pods in the entire cluster
-PODS=$(kubectl get pods -A -o json)
+kubectl get pod -A |grep vcluster |wc -l
 
-# Use jq to parse the JSON data and filter for pods with the "vcluster" label
-VC_PODS=$(echo $PODS | jq '.items[] | select(.metadata.labels.vcluster=="true")')
-
-# Calculate the count of vCluster pods
-VC_POD_COUNT=$(echo $VC_PODS | jq '. | length')
-
-# Print the result
-echo "There are $VC_POD_COUNT vCluster pods in the entire Kubernetes cluster."
+kubectl get pod -A |grep work-agent |wc -l
