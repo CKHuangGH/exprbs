@@ -43,7 +43,7 @@ done < node_list_all
 #ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 mkdir /root/.kube
 #scp /root/.kube/config root@10.$ip1.$ip2.3:/root/.kube
 
-kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+#kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
 cluster=1
 for i in $(cat node_list)
@@ -90,7 +90,7 @@ for i in `seq 0 0`
 do
     kubectl config use-context cluster$i
 	helm repo update
-helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --namespace kube-system
+	helm install cilium cilium/cilium --version 1.13.4 --wait --wait-for-jobs --namespace kube-system
 done
 
 for i in `seq 0 0`

@@ -1,5 +1,5 @@
 #!/bin/bash
-. /root/exprbs/m21/check.sh
+. /root/exprbs/m21/check_main.sh
 for i in $(cat node_list)
 do
     ssh root@$i kubectl taint nodes --all node-role.kubernetes.io/control-plane:NoSchedule-
