@@ -13,8 +13,9 @@ while read -r ip; do
 done < "node_list"
 
 . ./script/topapi.sh > /dev/null &
+. ./script/topnode.sh > /dev/null &
 
-tcpdump -i ens3 port 6443 -nn -q >> cross &
+# tcpdump -i ens3 port 6443 -nn -q >> cross &
 
 echo "waiting 180 secs......."
 sleep 180
