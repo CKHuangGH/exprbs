@@ -2,7 +2,7 @@ TimerForPodnode=1
 NameForPodnode=kubetopPodnode.csv
 PodnodeTime=0
 update_file_podnode() {
-  kubectl top node -A | tr -s '[:blank:]' ',' | tee --append $NameForPodnode;
+  kubectl top node | tr -s '[:blank:]' ',' | tee --append $NameForPodnode;
   echo $(date +'%s.%N') | tee --append $NameForPodnode;
 }
 
