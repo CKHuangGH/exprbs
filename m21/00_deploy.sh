@@ -1,3 +1,5 @@
+ls /root/.kube/ | wc -l
+
 cp node_list node_list_all
 sed -i '1d' node_list
 cp node_list ./mcluster_example/node_list
