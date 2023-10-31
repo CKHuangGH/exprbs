@@ -12,5 +12,6 @@ do
     mv "$temp_file" "$input_file"
 
     bash < "$input_file" &
+    sleep 1
     cluster=$((cluster+1))
 done

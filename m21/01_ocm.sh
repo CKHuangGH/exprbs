@@ -12,6 +12,7 @@ cluster=1
 for i in $(cat node_list)
 do
     ssh root@$i clusteradm init --wait > "temp${cluster}.sh" &
+    sleep 1
     cluster=$((cluster+1))
 done
 sleep 60
