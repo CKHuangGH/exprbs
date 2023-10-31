@@ -6,7 +6,16 @@ for file in *; do
     if [ -s "$file" ]; then
         continue
     fi
-    
-    # Display the filename for files with a size of 0
-    echo "$file"
+
+    # Extract numbers from the filename (assuming they are integers)
+    numbers=$(echo "$file" | grep -o -E '[0-9]{1,3}')
+
+    # Check if numbers were found in the filename
+    if [ -n "$numbers" ]; then
+        # Display the filename and extracted numbers
+        echo "File: $file, Numbers: $numbers"
+    else
+        # If no numbers found, display a message
+        echo "File: $file, No numbers found in the filename"
+    fi
 done
