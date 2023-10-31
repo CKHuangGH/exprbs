@@ -14,7 +14,7 @@ do
     ssh root@$i clusteradm init --wait > "temp${cluster}.sh" &
     cluster=$((cluster+1))
 done
-
+sleep 60
 ./number.sh
 # sleep 60
 
