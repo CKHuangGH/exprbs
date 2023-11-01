@@ -16,5 +16,6 @@ do
     if ((cluster % 50 == 0)); then
         echo "sleep 180secs..."
         sleep 180
+    fi
     cluster=$((cluster+1))
 done
