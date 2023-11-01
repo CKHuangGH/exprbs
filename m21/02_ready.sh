@@ -13,9 +13,9 @@ do
 
     bash < "$input_file" &
     echo $cluster
-    if ((cluster % 50 == 0)); then
-        echo "sleep 180secs..."
-        sleep 180
+    if ((cluster % 10 == 0)); then
+        echo "sleep 30secs..."
+        sleep 30
     fi
     cluster=$((cluster+1))
 done
