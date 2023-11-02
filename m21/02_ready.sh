@@ -11,11 +11,12 @@ do
 
     mv "$temp_file" "$input_file"
 
-    bash < "$input_file" &
+    
     echo $cluster
-    if ((cluster % 10 == 0)); then
-        echo "sleep 30secs..."
-        sleep 60
+    if ((cluster % 5 == 0)); then
+        bash < "$input_file"
+    else
+        bash < "$input_file" &
     fi
     cluster=$((cluster+1))
 done
