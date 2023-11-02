@@ -15,7 +15,7 @@ do
     echo $cluster
     if ((cluster % 10 == 0)); then
         echo "sleep 30secs..."
-        sleep 30
+        sleep 60
     fi
     cluster=$((cluster+1))
 done
