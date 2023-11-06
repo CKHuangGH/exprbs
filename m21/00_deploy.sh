@@ -7,7 +7,9 @@ ls /root/.kube/
 read -p "please enter the last cluster number in .kube: " number
 
 ./change
+kubectl apply -f /etc/kubernetes/manifest/etcd.yaml
 sleep 30
+
 ./combineAll.sh $number
 echo "wait 30s"
 sleep 30
