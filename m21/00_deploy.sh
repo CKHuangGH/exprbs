@@ -7,7 +7,7 @@ ls /root/.kube/
 read -p "please enter the last cluster number in .kube: " number
 
 ./change.sh
-kubectl apply -f /etc/kubernetes/manifest/etcd.yaml
+kubectl apply -f /etc/kubernetes/manifests/etcd.yaml
 sleep 30
 
 ./combineAll.sh $number
@@ -15,9 +15,6 @@ echo "wait 30s"
 sleep 30
 ./cicd_clusteradm.sh
 echo "wait 30s"
-
-
-
 
 kubectl get pod -A
 kubectl get pod -A --context cluster1
