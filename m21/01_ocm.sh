@@ -17,6 +17,22 @@ do
 done
 sleep 60
 ./number.sh
+
+REVISION=$(ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key endpoint status --write-out="json" | egrep -o '"revision":[0-9]*' | egrep -o '[0-9].*')
+ETCDCTL_API=3 etcdctl \
+	--endpoints=https://127.0.0.1:2379 \
+	--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+	--cert=/etc/kubernetes/pki/etcd/peer.crt \
+	--key=/etc/kubernetes/pki/etcd/peer.key \
+	compact ${REVISION}
+ETCDCTL_API=3 etcdctl \
+	--endpoints=https://127.0.0.1:2379 \
+	--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+	--cert=/etc/kubernetes/pki/etcd/peer.crt \
+	--key=/etc/kubernetes/pki/etcd/peer.key \
+	defrag
+
+
 # sleep 60
 
 # cluster=1

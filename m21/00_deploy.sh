@@ -6,7 +6,7 @@ cp node_list ./mcluster_example/node_list
 ls /root/.kube/
 read -p "please enter the last cluster number in .kube: " number
 
-./change
+./change.sh
 kubectl apply -f /etc/kubernetes/manifest/etcd.yaml
 sleep 30
 
