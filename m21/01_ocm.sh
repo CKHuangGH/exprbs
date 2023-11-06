@@ -32,7 +32,6 @@ ETCDCTL_API=3 etcdctl \
 	--key=/etc/kubernetes/pki/etcd/peer.key \
 	defrag
 
-
 # sleep 60
 
 # cluster=1
