@@ -6,6 +6,8 @@ cp node_list ./mcluster_example/node_list
 ls /root/.kube/
 read -p "please enter the last cluster number in .kube: " number
 
+./change
+sleep 30
 ./combineAll.sh $number
 echo "wait 30s"
 sleep 30
