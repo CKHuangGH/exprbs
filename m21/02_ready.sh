@@ -13,7 +13,8 @@ do
 
     
     echo $cluster
-    if ((cluster % 5 == 0)); then
+    if ((cluster % 50 == 0)); then
+        sleep 15
         bash < "$input_file"
     else
         bash < "$input_file" &
