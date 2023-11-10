@@ -17,8 +17,8 @@ do
     if ((cluster % 50 == 0)); then
         sleep 60
         bash < "$input_file"
-        sed -n "${start},${cluster}p" "$file_path" | while IFS= read -r line; do
-        # 在这里执行你想要的操作，例如输出每一行的内容
+        cluster2=$((cluster+1))
+        sed -n "${start},${cluster2}p" "node_list" | while IFS= read -r line; do
             echo "Processing line: $line"
             ssh root@$line clusteradm accept --clusters "cluster1"
         done
