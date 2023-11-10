@@ -23,10 +23,11 @@ do
             echo "Processing line: $current_line"
             ssh root@$current_line clusteradm accept --clusters "cluster1"
         done
+        sleep 180
         start=$cluster
     else
         bash < "$input_file" &
     fi
     cluster=$((cluster+1))
-    sleep 120
+    
 done
