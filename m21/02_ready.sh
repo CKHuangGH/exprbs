@@ -15,8 +15,8 @@ do
     
     echo $cluster
     if ((cluster % 50 == 0)); then
-        sleep 60
         bash < "$input_file"
+        sleep 240
         cluster2=$((cluster+1))
         for ((i=$start; i<=$cluster; i++)); do
             current_line=$(sed -n "${i}p" "node_list")
