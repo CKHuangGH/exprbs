@@ -16,14 +16,14 @@ do
     echo $cluster
     if ((cluster % 50 == 0)); then
         bash < "$input_file"
-        sleep 240
+        sleep 300
         cluster2=$((cluster+1))
         for ((i=$start; i<=$cluster; i++)); do
             current_line=$(sed -n "${i}p" "node_list")
             echo "Processing line: $current_line"
             ssh root@$current_line clusteradm accept --clusters "cluster1"
         done
-        sleep 180
+        sleep 300
         start=$cluster
     else
         bash < "$input_file" &
