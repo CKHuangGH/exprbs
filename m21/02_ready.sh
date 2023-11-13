@@ -14,7 +14,7 @@ do
 
     
     echo $cluster
-    if ((cluster % 50 == 0)); then
+    if ((cluster % 20 == 0)); then
         bash < "$input_file"
         sleep 60
         cluster2=$((cluster+1))
