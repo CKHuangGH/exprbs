@@ -101,6 +101,14 @@ do
 done
 sleep 5
 
+for i in `seq 1 $number`
+do
+kubectl config use-context cluster$i
+kubectl create ns monitoring
+helm install --version 34.10.0 prometheus-community/kube-prometheus-stack --generate-name --set grafana.service.type=NodePort --set grafana.service.nodePort=30099 --set prometheus.service.type=NodePort --set prometheus.prometheusSpec.scrapeInterval="5s" --namespace monitoring --values /root/exprbs/kubernetes/values_worker.yaml
+echo "wait for 5 secs"
+sleep 5
+done
 
 ip=$(cat node_list)
 
@@ -119,6 +127,35 @@ while IFS= read -r ip_address; do
   echo "import to $ip_address"
   ssh -o StrictHostKeyChecking=no root@$ip_address ctr -n k8s.io images import nginx.tar &
 done < "node_ip"
+
+
+i=$(awk "NR==1" node_list)
+port=30901
+echo "      - job_name: 'rntsm' " >> values.yaml
+echo "        scrape_interval: 5s" >> values.yaml
+echo "        metrics_path: /metrics" >> values.yaml
+echo "        honor_labels: true" >> values.yaml
+echo "        scheme: http" >> values.yaml
+echo "        tls_config:" >> values.yaml	
+echo "          insecure_skip_verify: true" >> values.yaml		
+echo "        static_configs:" >> values.yaml	
+echo "          - targets: [$i:$port]" >> values.yaml
+echo "            labels:" >> values.yaml
+echo "              cluster_name: rntsm" >> values.yaml
+
+sed -i '1d' node_list
+port=31580
+j=1
+for i in $(cat node_list)
+do
+    name=cluster$j
+	echo "$i:$port:$name" >> member	
+    j=$((j+1))				
+done
+
+kubectl config use-context cluster0
+kubectl create ns monitoring
+helm install --version 34.10.0 prometheus-community/kube-prometheus-stack --generate-name --set grafana.service.type=NodePort --set grafana.service.nodePort=30099 --set prometheus.service.type=NodePort --set prometheus.prometheusSpec.scrapeInterval="5s" --namespace monitoring --set prometheus.server.extraFlags="web.enable-lifecycle" --values values.yaml
 
 
 echo "-------------------------------------- OK --------------------------------------"
