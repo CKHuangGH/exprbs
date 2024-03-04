@@ -52,7 +52,7 @@ do
 	scp /root/.kube/config root@$i:/root/.kube
 	ssh root@$i chmod 777 /root/exprbs/kubernetes/worker_node.sh
 	ssh root@$i sh /root/exprbs/kubernetes/worker_node.sh $cluster &
-	ssh root@$i kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+	#ssh root@$i kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 	cluster=$((cluster+1))
 	sleep 2
 done
@@ -112,7 +112,7 @@ done
 
 ip=$(cat node_list)
 
-for i in {2..101}
+for i in {2..6}
 do
   new_ip=$(echo $ip | sed "s/\.1$/.$i/")
   echo "$new_ip" >> node_ip
@@ -131,31 +131,32 @@ done < "node_ip"
 
 i=$(awk "NR==1" node_list)
 port=30901
-echo "      - job_name: 'rntsm' " >> values.yaml
-echo "        scrape_interval: 5s" >> values.yaml
-echo "        metrics_path: /metrics" >> values.yaml
-echo "        honor_labels: true" >> values.yaml
-echo "        scheme: http" >> values.yaml
-echo "        tls_config:" >> values.yaml	
-echo "          insecure_skip_verify: true" >> values.yaml		
-echo "        static_configs:" >> values.yaml	
-echo "          - targets: [$i:$port]" >> values.yaml
-echo "            labels:" >> values.yaml
-echo "              cluster_name: rntsm" >> values.yaml
+echo "      - job_name: 'rntsm' " >> valuesprom.yaml
+echo "        scrape_interval: 5s" >> valuesprom.yaml
+echo "        metrics_path: /metrics" >> valuesprom.yaml
+echo "        honor_labels: true" >> valuesprom.yaml
+echo "        scheme: http" >> valuesprom.yaml
+echo "        tls_config:" >> valuesprom.yaml	
+echo "          insecure_skip_verify: true" >> valuesprom.yaml		
+echo "        static_configs:" >> valuesprom.yaml	
+echo "          - targets: [$i:$port]" >> valuesprom.yaml
+echo "            labels:" >> valuesprom.yaml
+echo "              cluster_name: rntsm" >> valuesprom.yaml
 
-sed -i '1d' node_list
+cp node_list node_list_temp
+sed -i '1d' node_list_temp
 port=31580
 j=1
-for i in $(cat node_list)
+for i in $(cat node_list_temp)
 do
     name=cluster$j
-	echo "$i:$port:$name" >> member	
+    echo "$i:$port:$name" >> member
     j=$((j+1))				
 done
 
 kubectl config use-context cluster0
 kubectl create ns monitoring
-helm install --version 34.10.0 prometheus-community/kube-prometheus-stack --generate-name --set grafana.service.type=NodePort --set grafana.service.nodePort=30099 --set prometheus.service.type=NodePort --set prometheus.prometheusSpec.scrapeInterval="5s" --namespace monitoring --set prometheus.server.extraFlags="web.enable-lifecycle" --values values.yaml
+helm install --version 34.10.0 prometheus-community/kube-prometheus-stack --generate-name --set grafana.service.type=NodePort --set grafana.service.nodePort=30099 --set prometheus.service.type=NodePort --set prometheus.prometheusSpec.scrapeInterval="5s" --namespace monitoring --set prometheus.server.extraFlags="web.enable-lifecycle" --values valuesprom.yaml
 
 
 echo "-------------------------------------- OK --------------------------------------"
