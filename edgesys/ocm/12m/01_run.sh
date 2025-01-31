@@ -14,7 +14,7 @@ done < "node_list"
 
 . ./script/topapi.sh > /dev/null &
 
-tcpdump -i ens3 port 6443 -nn -q >> cross &
+sudo tcpdump -i ens3 -nn -q '(src net 10.144.0.0/16 or dst net 10.144.0.0/16)' >> cross &
 
 echo "waiting 180 secs......."
 sleep 180
