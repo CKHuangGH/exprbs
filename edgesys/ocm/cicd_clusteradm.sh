@@ -10,12 +10,9 @@ rm -rf /usr/local/bin/clusteradm
 
 rm -rf clusteradm
 
-git clone https://github.com/open-cluster-management-io/clusteradm.git
-chmod 777 clusteradm
-cd clusteradm
-make build
+curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
 
-cp /root/go/bin/clusteradm /usr/local/bin/clusteradm
+# cp /root/go/bin/clusteradm /usr/local/bin/clusteradm
 cd ..
 for i in $(cat node_list)
 do
