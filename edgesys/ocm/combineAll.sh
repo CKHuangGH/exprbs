@@ -1,11 +1,11 @@
 number=$1
 
 
-rm -rf /usr/bin/kubectl
+sudo rm -rf /usr/bin/kubectl
 
-curl -LO https://dl.k8s.io/release/v1.32.1/bin/linux/amd64/kubectl
+sudo curl -LO https://dl.k8s.io/release/v1.32.1/bin/linux/amd64/kubectl
 
-mv kubectl /usr/bin/
+sudo install -o root -g root -m 0755 kubectl /usr/bin/kubectl
 
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
