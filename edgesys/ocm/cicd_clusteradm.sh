@@ -16,5 +16,5 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/
 cd ..
 for i in $(cat node_list)
 do
-	scp /root/go/bin/clusteradm root@$i:/usr/local/bin/ &
+	scp /usr/local/bin/clusteradm root@$i:/usr/local/bin/ &
 done
