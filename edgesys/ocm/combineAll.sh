@@ -89,8 +89,8 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 
 echo "install go"
-wget https://go.dev/dl/go1.20.5.linux-amd64.tar.gz
-tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
+wget https://go.dev/dl/go1.23.5.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.23.5.linux-amd64.tar.gz
 cp /usr/local/go/bin/go /usr/local/bin
 
 for i in `seq 0 0`
