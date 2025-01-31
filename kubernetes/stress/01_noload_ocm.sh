@@ -63,7 +63,7 @@ echo $(date +'%s.%N') >> number.txt
 g=1
 
 echo "wait for 3000 secs"
-for (( i=18900; i>0; i-- )); do
+for (( i=600; i>0; i-- )); do
     echo "$i ..."
     sleep 1
 done

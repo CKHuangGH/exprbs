@@ -22,7 +22,7 @@ echo "start collect" >> number.txt
 echo $(date +'%s.%N') >> number.txt
 
 echo "wait for 9000 secs"
-for (( i=9000; i>0; i-- )); do
+for (( i=900; i>0; i-- )); do
     echo "$i secs..."
     sleep 1
 done

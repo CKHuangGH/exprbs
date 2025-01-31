@@ -1,5 +1,11 @@
 number=$1
 
+rm -rf /usr/bin/kubectl
+
+curl -LO https://dl.k8s.io/release/v1.32.1/bin/linux/amd64/kubectl
+
+mv kubectl /usr/bin/
+
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
 # curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash
@@ -8,7 +14,7 @@ curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack
 
 #curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
 
-curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-amd64" && sudo install -c -m 0755 vcluster /usr/local/bin && rm -f vcluster
+#curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-amd64" && sudo install -c -m 0755 vcluster /usr/local/bin && rm -f vcluster
 
 for i in `seq 0 $number`
 do
@@ -50,8 +56,8 @@ for i in $(cat node_list)
 do
 	ssh-keyscan $i >> /root/.ssh/known_hosts
 	scp /root/.kube/config root@$i:/root/.kube
-	ssh root@$i chmod 777 /root/exprbs/12m/worker_node.sh
-	ssh root@$i sh /root/exprbs/12m/worker_node.sh $cluster &
+	ssh root@$i chmod 777 /root/exprbs/edgesys/karmada/worker_node.sh
+	ssh root@$i sh /root/exprbs/edgesys/karmada/worker_node.sh $cluster &
 	cluster=$((cluster+1))
 done
 
