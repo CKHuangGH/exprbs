@@ -50,8 +50,8 @@ for i in $(cat node_list)
 do
 	ssh-keyscan $i >> /root/.ssh/known_hosts
 	scp /root/.kube/config root@$i:/root/.kube
-	ssh root@$i chmod 777 /root/exprbs/edgesys/ocm/worker_node.sh
-	ssh root@$i sh /root/exprbs/edgesys/ocm/worker_node.sh $cluster &
+	ssh root@$i chmod 777 /root/exprbs/12m/worker_node.sh
+	ssh root@$i sh /root/exprbs/12m/worker_node.sh $cluster &
 	cluster=$((cluster+1))
 done
 
