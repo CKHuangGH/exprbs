@@ -13,7 +13,6 @@ rm -rf clusteradm
 curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
 
 # cp /root/go/bin/clusteradm /usr/local/bin/clusteradm
-cd ..
 for i in $(cat node_list)
 do
 	scp /usr/local/bin/clusteradm root@$i:/usr/local/bin/ &

@@ -17,6 +17,12 @@ sudo service ntp start
 # pip3 install prometheus_api_client
 # pip3 install aiohttp
 
+sudo rm -rf /usr/bin/kubectl
+
+sudo curl -LO https://dl.k8s.io/release/v1.32.1/bin/linux/amd64/kubectl
+
+sudo install -o root -g root -m 0755 kubectl /usr/bin/kubectl
+
 
 #curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
 # curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
@@ -25,8 +31,8 @@ curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/downloa
 
 #modify the address for kubeproxy
 echo "copy metrics_server.yaml-----------------------"
-mv /root/exprbs/12m/metrics_server.yaml /root/
-cp /root/exprbs/12m/node_list /root/
+mv /root/exprbs/edgesys/karmada/metrics_server.yaml /root/
+cp /root/exprbs/edgesys/karmada/node_list /root/
 
 echo "Install Helm3-----------------------"
 wget -c https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
