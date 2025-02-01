@@ -20,6 +20,7 @@ echo "waiting 180 secs......."
 sleep 180
 echo "start collect" >> number.txt
 echo $(date +'%s.%N') >> number.txt
+echo $(kubectl get clusters --kubeconfig /etc/karmada/karmada-apiserver.config) >> number.txt
 
 echo "wait for 9000 secs"
 for (( i=900; i>0; i-- )); do
