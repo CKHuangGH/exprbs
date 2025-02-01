@@ -15,5 +15,5 @@ done
 
 for i in $(cat node_list)
 do
-    ssh root@$i eval "$REGISTER_CMD" &
+    ssh root@$i eval "$REGISTER_CMD"
 done
