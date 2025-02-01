@@ -30,8 +30,8 @@ curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack
 
 #modify the address for kubeproxy
 echo "copy metrics_server.yaml-----------------------"
-mv /root/exprbs/edgesys/karmada/metrics_server.yaml /root/
-cp /root/exprbs/edgesys/karmada/node_list /root/
+mv /root/exprbs/edgesys/karmada-pull/metrics_server.yaml /root/
+cp /root/exprbs/edgesys/karmada-pull/node_list /root/
 
 echo "Install Helm3-----------------------"
 wget -c https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
