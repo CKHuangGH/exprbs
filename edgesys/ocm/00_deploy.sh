@@ -5,6 +5,8 @@ ls /root/.kube/
 ls -1 /root/.kube/ | wc -l
 read -p "please enter the last cluster number in .kube: " number
 
+./patch.sh
+
 ./combineAll.sh $number
 echo "wait 30s"
 sleep 30

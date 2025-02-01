@@ -32,6 +32,7 @@ curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack
 echo "copy metrics_server.yaml-----------------------"
 mv /root/exprbs/edgesys/karmada-pull/metrics_server.yaml /root/
 cp /root/exprbs/edgesys/karmada-pull/node_list /root/
+cp /root/exprbs/edgesys/karmada-pull/patch.sh /root/
 
 echo "Install Helm3-----------------------"
 wget -c https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
@@ -53,5 +54,5 @@ sleep 30
 
 echo "Install Metrics server-----------------------"
 kubectl --context=cluster$cluster create -f metrics_server.yaml
-
+./patch.sh
 echo "-----------------------Member cluster$cluster is ready----------------------"
