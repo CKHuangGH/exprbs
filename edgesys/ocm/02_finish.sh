@@ -6,4 +6,4 @@ do
 done
 echo "wait 10 secs"
 sleep 10
-kubectl get ns --no-headers | wc -l
+expr $(kubectl get ns --no-headers | wc -l) - 6
