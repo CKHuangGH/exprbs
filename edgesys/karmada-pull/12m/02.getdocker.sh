@@ -6,7 +6,7 @@ mv cross /root/exprbs/edgesys/karmada/12m/results/cross
 mv number.txt /root/exprbs/edgesys/karmada/12m/results/number.txt
 sleep 5
 random_number=$((1 + $RANDOM))
-scp -o StrictHostKeyChecking=no -r /root/exprbs/edgesys/karmada/12m/results chuang@172.16.111.106:/home/chuang/results$number-$random_number
+scp -o StrictHostKeyChecking=no -r /root/exprbs/edgesys/karmada/12m/results chuang@172.16.111.106:/home/chuang/results$number-$random_number-karmada-pull
 
 echo "-----------------------copy ok -------------------------------"
 
