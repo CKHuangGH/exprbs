@@ -55,6 +55,7 @@ cluster=1
 for i in $(cat node_list)
 do
 	ssh-keyscan $i >> /root/.ssh/known_hosts
+  scp /usr/local/bin/kubectl-karmada root@$i:/usr/local/bin/kubectl-karmada
 	scp /root/.kube/config root@$i:/root/.kube
 	ssh root@$i chmod 777 /root/exprbs/edgesys/karmada-pull/worker_node.sh
 	ssh root@$i sh /root/exprbs/edgesys/karmada-pull/worker_node.sh $cluster &
