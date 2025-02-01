@@ -9,6 +9,3 @@ random_number=$((1 + $RANDOM))
 scp -o StrictHostKeyChecking=no -r /root/exprbs/edgesys/ocm/12m/results chuang@172.16.111.106:/home/chuang/results$number-$random_number-ocm
 
 echo "-----------------------copy ok -------------------------------"
-
-sleep 300
-ssh -o StrictHostKeyChecking=no chuang@172.16.111.106 . /home/chuang/k8s_g5k/edgesys-12m/del.sh &
