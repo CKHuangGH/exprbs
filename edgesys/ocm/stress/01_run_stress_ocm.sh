@@ -39,12 +39,9 @@ read -p "please enter the test number(2000, 4000, 6000, 8000, 10000): " number
 j=1
 for i in $(cat node_exec)
 do 
-	#ssh root@$i . /root/exprbs/kubernetes/stress/script/getconfig.sh > /dev/null
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodwa.sh > /dev/null &
-	#ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodvc.sh > /dev/null &
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodra.sh > /dev/null &
 	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodkl.sh > /dev/null &
-	#ssh root@$i . /root/exprbs/kubernetes/stress/script/toppoddns.sh > /dev/null &
 	j=$((j+1))
 done
 
