@@ -36,19 +36,6 @@ done < node_list_all
 
 read -p "please enter the test number(2000, 4000, 6000, 8000, 10000): " number
 
-. ./script/tophub.sh > /dev/null &
-
-j=1
-for i in $(cat node_exec)
-do 
-	ssh root@$i . /root/exprbs/edgesys/karmada-push/stress/script/toppodwa.sh > /dev/null &
-	j=$((j+1))
-done
-
-sudo tcpdump -i ens3 -nn -q '(src net 10.176.0.0/16 and dst net 10.176.0.0/16) and not arp' >> cross &
-
-echo "waiting 180 secs"
-sleep 180
 #scp root@$(cat node_exec):/root/kubeconfig.yaml /root/kubeconfig.yaml
 echo $number
 echo $number >> number.txt
@@ -59,6 +46,17 @@ echo $(date +'%s.%N') >> number.txt
 . ./checking_deployment_ocm.sh $number &
 . ./checking_ocm.sh $number
 g=1
+
+. ./script/tophub.sh > /dev/null &
+
+j=1
+for i in $(cat node_exec)
+do 
+	ssh root@$i . /root/exprbs/edgesys/karmada-push/stress/script/toppodwa.sh > /dev/null &
+	j=$((j+1))
+done
+
+sudo tcpdump -i ens3 -nn -q '(src net 10.176.0.0/16 and dst net 10.176.0.0/16) and not arp' >> cross &
 
 echo "wait for 18900 secs"
 for (( i=900; i>0; i-- )); do
