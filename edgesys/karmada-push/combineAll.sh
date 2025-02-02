@@ -10,7 +10,7 @@ curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack
 
 # curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash
 
-curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
+#curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
 
 #curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
 
