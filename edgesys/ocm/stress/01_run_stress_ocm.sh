@@ -21,7 +21,7 @@ while read -r ip; do
     fi
 
     # 执行ping命令
-    ping -c 4 "$ip" > number.txt  # 这里的-c 4表示ping 4次，您可以根据需要更改
+    ping -c 2 "$ip" > number.txt  # 这里的-c 4表示ping 4次，您可以根据需要更改
 done < "node_list"
 
 while read line
@@ -34,8 +34,8 @@ done < node_list_all
 
 read -p "please enter the test number(2000, 4000, 6000, 8000, 10000): " number
 
-. ./script/topcm.sh > /dev/null &
 . ./script/tophub.sh > /dev/null &
+
 j=1
 for i in $(cat node_exec)
 do 
@@ -45,7 +45,7 @@ do
 	j=$((j+1))
 done
 
-tcpdump -i ens3 port 6443 -nn -q >> cross &
+sudo tcpdump -i ens3 -nn -q '(src net 10.176.0.0/16 and dst net 10.176.0.0/16) and not arp' >> cross &
 
 echo "waiting 180 secs"
 sleep 180

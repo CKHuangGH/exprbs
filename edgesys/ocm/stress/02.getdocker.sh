@@ -18,6 +18,6 @@ mv cross /root/exprbs/edgesys/ocm/stress/results/cross
 mv number.txt /root/exprbs/edgesys/ocm/stress/results/number.txt
 sleep 5
 random_number=$((1 + $RANDOM))
-scp -o StrictHostKeyChecking=no -r /root/exprbs/edgesys/ocm/stress/results chuang@172.16.111.106:/home/chuang/results$number-$random_number
+scp -o StrictHostKeyChecking=no -r /root/exprbs/edgesys/ocm/stress/results chuang@172.16.111.106:/home/chuang/results$number-$random_number-ocm
 
 echo "-----------------------copy ok -------------------------------"
