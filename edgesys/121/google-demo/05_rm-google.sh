@@ -1,1 +1,0 @@
-clusteradm delete work kubernetes-manifests --clusters cluster1
