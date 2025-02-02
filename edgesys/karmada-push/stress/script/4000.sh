@@ -22,7 +22,7 @@ spec:
       containers:
         - name: nginx
           image: docker.io/library/nginx:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Never
 EOF
 )
     kubectl apply -f - <<< "$deployment_yaml" --kubeconfig /etc/karmada/karmada-apiserver.config
