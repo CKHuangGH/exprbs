@@ -7,6 +7,8 @@ kind: Deployment
 metadata:
   name: nginx-$i
   namespace: default
+  labels:
+    app: nginx
 spec:
   replicas: 10
   selector:
@@ -20,10 +22,10 @@ spec:
       containers:
         - name: nginx
           image: docker.io/library/nginx:latest
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
 EOF
 )
-    clusteradm create work test$i -f - <<< "$deployment_yaml" --cluster cluster1
+    kubectl apply -f - <<< "$deployment_yaml" --kubeconfig /etc/karmada/karmada-apiserver.config
 	
 done
 echo "All deployments created." >> number.txt
