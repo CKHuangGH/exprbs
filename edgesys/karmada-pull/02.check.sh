@@ -1,1 +1,1 @@
-kubectl get clusters --kubeconfig /etc/karmada/karmada-apiserver.config
+kubectl get clusters --kubeconfig /etc/karmada/karmada-apiserver.config | wc -l
