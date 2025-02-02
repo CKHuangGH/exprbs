@@ -39,9 +39,9 @@ read -p "please enter the test number(2000, 4000, 6000, 8000, 10000): " number
 j=1
 for i in $(cat node_exec)
 do 
-	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodwa.sh > /dev/null &
-	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodra.sh > /dev/null &
-	ssh root@$i . /root/exprbs/kubernetes/stress/script/toppodkl.sh > /dev/null &
+	ssh root@$i . /root/exprbs/edgesys/ocm/stress/script/toppodwa.sh > /dev/null &
+	ssh root@$i . /root/exprbs/edgesys/ocm/stress/script/toppodra.sh > /dev/null &
+	ssh root@$i . /root/exprbs/edgesys/ocm/stress/script/toppodkl.sh > /dev/null &
 	j=$((j+1))
 done
 
@@ -61,7 +61,7 @@ echo $(date +'%s.%N') >> number.txt
 g=1
 
 echo "wait for 18900 secs"
-for (( i=18900; i>0; i-- )); do
+for (( i=900; i>0; i-- )); do
     echo "$i secs..."
     sleep 1
 done
