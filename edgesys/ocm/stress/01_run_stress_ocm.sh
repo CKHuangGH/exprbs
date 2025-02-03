@@ -56,7 +56,7 @@ do
 	j=$((j+1))
 done
 
-sudo tcpdump -i ens3 -nn -q '(src net 10.176.0.0/16 and dst net 10.176.0.0/16) and not arp' >> cross &
+sudo tcpdump -i ens3 -nn -q '(src net 10.144.0.0/16 and dst net 10.144.0.0/16) and not arp' >> cross &
 
 
 echo "wait for 18900 secs"
