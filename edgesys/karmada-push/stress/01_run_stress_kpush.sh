@@ -49,7 +49,7 @@ g=1
 
 . ./script/tophub.sh > /dev/null &
 
-sudo tcpdump -i ens3 -nn -q '(src net 10.144.0.0/16 and dst net 10.144.0.0/16) and not arp' >> cross &
+sudo tcpdump -i ens3 -nn -q '(src net 10.176.0.0/16 and dst net 10.176.0.0/16) and not arp' >> cross &
 
 echo "wait for 18900 secs"
 for (( i=900; i>0; i-- )); do
