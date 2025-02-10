@@ -8,14 +8,6 @@ sudo install -o root -g root -m 0755 kubectl /usr/bin/kubectl
 
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
-# curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash
-
-#curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | sudo bash -s kubectl-karmada
-
-#curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
-
-#curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-amd64" && sudo install -c -m 0755 vcluster /usr/local/bin && rm -f vcluster
-
 for i in `seq 0 $number`
 do
     sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
@@ -46,9 +38,6 @@ ip2=$(echo $line | cut -d "." -f 3)
 break
 done < node_list_all
 
-#ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 mkdir /root/.kube
-#scp /root/.kube/config root@10.$ip1.$ip2.3:/root/.kube
-
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
 cluster=1
@@ -67,11 +56,6 @@ sudo apt-get install vim -y
 sudo apt-get install net-tools -y
 sudo apt install python3-pip -y
 sudo apt-get install jq -y
-# pip3 install kubernetes
-# pip3 install pandas==1.5.3
-# pip3 install pint
-# pip3 install prometheus_api_client
-# pip3 install aiohttp
 sudo apt install git -y
 sudo apt install ntpdate -y
 sudo service ntp stop
